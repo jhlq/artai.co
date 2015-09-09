@@ -6,7 +6,7 @@ Exercise: Grade your recent feelings with sketches of emotions.
 The Dalai Lama: "If you want others to be happy, practice compassion. If you want to be happy, practice compassion". 
 
 **What is Happiness?
-Terms of Happiness:
+*Terms of Happiness
 <ul>
 Happiness: The experience of joy, contentment, or positive well-being, combined with a sense that one’s life is good, meaningful, and worthwhile.
 Life satisfaction: A general assessment that, as a whole, one's life is good and worth living.
@@ -14,6 +14,7 @@ Positive affect: A technical term to describe the experience of feeling a positi
 Subjective well-being: Is often assessed by measuring life satisfaction and positive affect. It is strongly tied to positive health.
 </ul>
 
+*General
 http://greatergood.berkeley.edu/article/item/happiness_the_hard_way
 
 The word happiness has roots in the word luck.
@@ -102,3 +103,23 @@ http://ggia.berkeley.edu/practice/finding_silver_linings
 http://ggia.berkeley.edu/practice/use_your_strengths
 http://ggia.berkeley.edu/practice/meaningful_pictures
 </ul>
+
+**Joy
+http://greatergood.berkeley.edu/article/item/a_better_way_to_pursue_happiness
+
+Prioritize everyday positive events rather than rare large ones and do not expect to be constantly happy.
+
+**Myths
+*Terms of Happiness
+<ul>
+Affective forecasting: The process of making predictions about how you will feel in the future.
+Impact bias: The tendency to overestimate how an event or experience in the future will affect our emotional well-being, for better or worse. 
+Set point theory: The theory that we each have a relatively stable level of happiness that is largely determined by our genes and personality.
+Hedonic adaptation (aka the "hedonic treadmill"): Our ability to adapt to changes in our life circumstances or sensory experiences.
+Prioritizing positivity: Deliberately organizing your day-to-day life so that it contains situations that naturally give rise to positive emotional experiences. 
+</ul>
+
+*Money
+Might boost happiness when it lifts people out of impoverished circumstances, but beyond that, its effects are limited.
+
+
