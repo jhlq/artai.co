@@ -74,11 +74,15 @@ function process(fname,title)
 	<html>
 	<head>
 	  <meta charset="utf-8">
-	  <title>$title</title>
+	  <title>ArtAI, Happiness, $title</title>
 	<link rel="stylesheet" type="text/css" href="../style.css">
 	</head>
 	<body>
-
+	<nav>
+	<a href="index.html">Index.</a>
+	<a href="week1.html">Week 1.</a>
+	<a href="week2.html">Week 2.</a>
+	</nav>
 	$text
 
 	</body>

@@ -1,0 +1,8 @@
+
+
+4. Membrane potential
+Nernst equilibrium equation, used for determining reversal potentials: 
+
+5. Cable properties
+Attenuation: gradual decrease.
+Arborisation: branching.
