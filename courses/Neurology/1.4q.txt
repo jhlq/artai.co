@@ -1,0 +1,54 @@
+
+Question 1 
+Ion flux through an ion channel is a passive process driven by electrochemical diffusion. Which statement is true?
+
+ There is no current flow if the ion concentrations are equal on both sides of the membrane.
+There is no current flow if the electrical potential is equal on both sides of the membrane.
+The electrical potential is more important than the concentration gradient.
+For any given concentration of ions there is an electrical potential that prevents net current flow. 
+
+
+Question 2 
+What happens to a neuron which has a resting membrane potential of -70 mV, if potassium channels increase their open probability?
+
+ Hyperpolarization 
+Depolarization
+Repolarization
+Nothing
+
+
+Question 3 
+The equilibrium potential
+
+ of a given ion across a membrane is the potential at which there is no net movement of that ion across the membrane due to electrochemical forces
+of K+ across a typical nerve cell membrane is close to the resting potential of most neurons
+of a given ion across a membrane is a function of the concentration of that ion on both sides of the membrane
+all of the above are correct 
+
+
+Question 4 
+What are the approximate intracellular and extracellular concentrations of potassium for most mammalian neurons?
+
+ Intracellular 150 mM and Extracellular 5 mM 
+Intracellular 5 mM and Extracellular 150 mM
+Intracellular 50 mM and Extracellular 100 mM
+Intracellular 100 mM and Extracellular 50 mM
+
+
+Question 5 
+What are the approximate intracellular and extracellular concentrations of chloride for most mammalian neurons?
+
+ Intracellular 120 mM and Extracellular 5 mM
+Intracellular 5 mM and Extracellular 120 mM 
+Intracellular 25 mM and Extracellular 100 mM
+Intracellular 100 mM and Extracellular 25 mM
+
+
+Question 6 
+Calculate the reversal potential of a calcium selective conductance at 37 Celsius if the intracellular calcium concentration is 1 uM and the extracellular calcium concentration is 2 mM.
+
+ -90.0 mV
+-103.5 mV
+101.5 mV 
+203.0 mV
+
