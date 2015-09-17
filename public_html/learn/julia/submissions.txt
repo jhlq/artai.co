@@ -1,0 +1,296 @@
+Submissions:
+
+
+
+Name: Marcus
+Q1: Answer A
+Q2: Answer B
+
+
+Name: Marcus
+Q1: Love
+Q2: More love
+
+
+Name: 
+Q1: 
+Q2: 
+
+
+Name: A
+Q1: 
+Q2: 
+
+
+Name: brenda
+Q1: how many continents do we have in the world
+Q2: what word is spelt incorrectly in the dictionary
+
+
+Name: Kwizera Jenifa
+Q1: What is happens once a year and twice a week?
+Q2: Which team took the world cup (2014)
+
+
+Name: Susan kayisanabo
+Q1: Which reggae singing star died on 11th may 1981?
+Q2: In which city was martin luther king assassinated in 1968?
+
+
+Name: Brenda
+Q1: What Has An Eye But Can Not See
+Q2: What Is MTN In Full
+
+
+Name: Brenda
+Q1: In Which Year Was Napoleon Bornapte Born In
+Q2: Who Is The Father Of Is History
+
+
+Name: Ndyaba Iam
+Q1: Who is the first female astronaut?
+Q2: 
+
+
+Name: brenda
+Q1: in which year was napoleon bornapate born in
+Q2: who is the father of history
+
+Julia1
+Contacts: M
+Q1: a
+Q2: b
+Q3: c
+Q4: d
+Q5: e
+
+
+Julia1
+
+Contacts: M
+Q1: a
+Q2: 
+Q3: 
+Q4: 
+Q5: 
+
+
+Julia2
+
+Contacts: M
+Q1: 2
+Q2: 
+Q3: 
+Q4: 
+Q5: 
+
+
+Julia5
+
+Contacts: m
+Q1: 1
+Q2: 2
+Q3: 3
+Q4: 4
+Q5: 5
+
+
+Julia1
+
+Contacts: 0728821225
+Q1: 1.it is flexible,2.it provides a sophiscated compiler,3.it is familiar,4.is an object_oriented program,5.it provides ease and expressiveness for high_level numeric computing,6.it combines the features of imperative,7.it is functional,8.multiple dispatch,9.good performance,10.it provides a single environment productive enough for prototyping and efficient enough for deploying performance intensive applications
+Q2: is used in conversation or meeting between two or more contents
+Q3: are used to store values
+Q4: integers are numbers that do not include decimal point eg 8,15 etc.while floating_point numbers are numbers that include decimal point eg 2.6,4.8 etc... 
+Q5: operators are used to operate two or more operands examples of operators are:arithmetical operators(-,+,*,%,/).logical operators( AND,OR,NAND,NOR,XOR etc.bitwice(~,|,&,$,>>>,>>,<<).comparisions(==,!=,<,<=,>,>=)  )
+
+
+Julia2
+
+Contacts: 0728821225
+Q1: complex numbers are results brought by  square root of a negative number where it has imaginary part that includes 'i' and a real part that consists of only constant numbers from 0 to 9 eg sqrt of neg 4 results 2i+2 and -2i-2,It makes writing polynomial expressions much cleaner
+Q2: strings are made from the squence of characters. Note that characters are(A,B,C,D..........Z)Eg of making a string 'M','A','H'.,'O','R','O' the string from these characters is MAHORO
+Q3: function is an object that maps a tuple of argument values to a return value
+Q4: it allows portions of code to be evaluated depending on the value of a boolean expression
+Q5: a scope is a region of code within which variable is visible
+
+
+Julia3
+
+Contacts: 0728821225
+Q1: 1.types are used to generate codes,2. helps method to dispatch,3.they allow program expression to execute
+Q2: types allow method dispatch on the types of function arguments to be deeply integrated with the language and the method is rooted in type system
+Q3: constructors are functions that construct objects especially instances of composite types
+Q4: conversion: under performance of convert function the conversion of values to various types occurs while promotion refers to convert values of mixed types to a single common type
+Q5: 1.end_module allows to create top_level definitions without warrying about name conflicts when your code is used together with somebody else's._ Within a module you can control which names from other modules are visible(via import)and specific which of your names are intended to be public(via export)
+
+
+Julia11
+
+Contacts: M
+Q1: 1
+Q2: 2
+Q3: 3
+Q4: 4
+Q5: 5
+
+
+
+Julia4
+
+Contacts: 0728821225
+Q1: metaprogramming is the writing of computer programs that write or manipulate other programs or themselves as their data
+Q2: an array is a collection of objects stored in a multi_dimensional grid
+Q3: a matrix is a combination of rows and columns within an array 
+Q4: 1.no need of underlying a synchroneous operation,2. text i/o values do not get converted to any canoncical text representation,4.with basic streams all julia streams expose atleast a read and a write method,taking the stream as their first argument.5. with resolving ip address streams are used to do appropriate address resolution,6. with simple tcp the method names feels familiar other kinds of servers 
+Q5: your code must be available on any process that runs it.
+
+
+Julia5
+
+Contacts: 0728821225
+Q1: it borrows backtick notation for commands from the shell,perl and ruby
+Q2: 1.it makes good use of codes 2.through most codes can be written in julia there are many high_quality 3.functions can be called directly from julia without any glue code,code generation or compilation even from interactive prompt
+Q3: by using non_interactive pkg.add command or youa can use pkg.add function
+Q4: grobal names are frequently constants,and declaring them as such greatly improves performance
+Q5: 1. it avoids errors than to rely on catching, 2.it helps compiler to annotate specific uses than to try to pack many alternatives into one type,3.it does not accept numbers of all types
+
+
+Julia6
+
+Contacts: 0728821225
+Q1: multiple dispatch is the feature of some object_oriented programming languages in which a function or method can be dynamically dispatched based on the runtime type of more than of its arguments
+Q2: to give it as a first argument to the julia command
+Q3: names of variables are in lower_case work separation can be indicated by underscores but use of underscore is discouraged unless the name would be hard to read or otherwise
+Q4: overflow is the exceeding maximum representable value of a given type result
+Q5: "a=1" means that 1 assigns to a, while "a==1" means a equals to 1
+
+
+Julia7
+
+Contacts: 0728821225
+Q1: comprex(a,b) it avoids multiplication and addition operators
+Q2: unicode is a computing industry standard for the consistent encoding,representation and handling of text expressed in most of word's writing systems
+Q3: it causes a function to return immediately providing an expression whose value is returned
+Q4: are good for executing conditioned statements
+Q5: the function turns the value of the grobal if there were a such variable or produce an error if no such grobal existed
+
+
+Julia8
+
+Contacts: 0728821225
+Q1: 1.UPDATING OPERATORS: Assigns The Result Of The Operation Back Into Its Left Oparand.The Updating Version Of Binary Operator Is Formed By Placing a= Immediately After The Operator.EXAMPLE: X+=3 Equivalent To X=+3   2.BITWICE OPERATORS:Operate On One Or More Bit Patterns Or Binary Numerals At The Level Of Their Individual Bits.It Is a Fast, Primitive Action Directly Supported By Processor And Is Used To Manipulate Values For Comparisions And Calculations. Examples: B.Not, B.And, B.Or, B.Xor   3.ARITHEMATICAL OPERATOR:Is The Oldest And Most Elimentary Branch Of Mathematics, It Consists In Study Of Numbers Especially The Properties Of Traditional Operations Between Them.EXAMPLES: Addition,substraction, Multiplication And Division.
+Q2: PARAMETRIC METHODS:Are Defined Methods Optionally Have Type Parameters Immediately After The Method Name And Before The Parameter Tuple
+Q3: INNER CONSTRUCTOR METHOD:Is a Constructor Method That Enforces Invariants And Allows Construction Of Self_referential Object After The Failure Of Outer Constructor Method.
+Q4: Julia>x=12    Julia>type(x)   Julia>type Of(ans) Juia>convert(floating Point;x)   Julia>type Of(ans) 
+Q5: MAIN: Is The Top_level Module, And Julia Starts With Main Set As The Current Module.Variables Defined At The Prompt Go In Main And Who S<>lists Variables In Main   CORE: Contains All Identifiers Considered "built In" To The Language i.e Part Of The Core Language And Not Libraries Every Module Implicitly Specifies Using Core Since You Can Not Do Anything Without Those Definitions    BASE: Is The Standard Library (the Contents Of Base/).All Modules Implicity Contain Using Base Since This Is Needed In The Vast Majority Of Cases. 
+
+
+Julia9
+
+Contacts: 0728821225
+Q1: Macros Allow Program To Automatically Generate Expressions By Transforming Zeros Or More Argument Expressions Into a Single Result Expression, Which Then Takes The Place Of Macro Call In The Final Syntax Tree
+Q2: By Replacating The Vector To The Size Of The Matrix
+Q3: Scalar Indexing And Assignment,   2.Insertion Of Non Zeros Values One At a Time In CSC Structure Tend To Be Slow
+Q4: A TCP: Transmission Control Protocol, It Is Used To Get Data From One Network Device To An Other.
+Q5: 1.@spawn Macro Makes Things Easier , It Operates On An Expression Rather Than a Function And Picks Where To Do The Operation For You.3. It Also Makes Data But This Is Not As Obvious Hence It Can Be Called An Implicit Data Movement Operation.4.It Also Used To Flip Coins On Two Processes.5. It Limits The Parallelism To Two Processes
+
+
+Julia1
+
+Contacts: nkubito innocent
+Q1: motivating, encouraging us to work hard.
+Q2: getting more knowledge 
+Q3: is kind of Memory which stores a single value.
+Q4: An integer is a number with out decimal points like 2,3 while floating points are numbers with 9 decimal places 
+Q5: is sign which combines to numbers like +&#885;-
+
+
+Julia4
+
+Contacts: nkubito innocent
+Q1: is a reflection ,the ability of running program to dynamically discover properties of itself.
+Q2: are collection of objects stored in mult_dimensional grid. 
+Q3: set of operations 
+Q4: to expose at least a read and a write method .
+Q5: the speed of the CPUs.
+
+
+Julia2
+
+Contacts: nkubito innocent
+Q1: are represented by Im where i represents the principle square root of-1.eg,1+3Im.
+Q2: the finite sequence of characters,they came when one asked what a character is.
+Q3: are objects that map tuples of argument values to a return values.egf(x y).
+Q4: allows portions of code to be evaluated or not depending on the value of a boolean expression.
+Q5: is the region of code within which a variable is visible. 
+
+
+Julia3
+
+Contacts: nkubito innocent
+Q1: they allow methods dispatch on the types of function arguments to be deeply integrated with the language.
+Q2: they allow methods dispatch on the types of function arguments to be deeply integrated with the language.
+Q3: are functions thatcreate new objects
+Q4: types 
+Q5: Modules allow you tocreate top-level definitions withoutworrying about name conflicts whenyour code is used together withsomebody else’s. 
+
+
+Julia10
+
+Contacts: 0728821225
+Q1: is a linear sequence of specialised modules used for pipelining
+Q2: 1.the code to be called must be available as a shared library 2.it must be simple and efficiency 3.a function name maybe used alone in place of the tuple 4. the input types must be written as literal tuple
+Q3: automotive package
+Q4: it announces the existance of the element to the compiler
+Q5: javascript
+
+
+Julia5
+
+Contacts: nkubito innocent
+Q1: The run methoditself returns nothing, andthrows an ErrorException ifthe external command failsto run successfully.
+Q2: A tuple of input types, like those allowed for the return type. The input types must be written as a literal tuple, not a tuple- valued variable or expression. Return type, which may be any bits type, including Int32, Int64, Float64, or Ptr{T} for any type parameter T, indicating a pointer to values of type T, or Ptr {Void} for void* “untyped pointer” values.
+Q3: You can add a package tothe list of requirements withthe Pkg.add function, 
+Q4: Avoid containers withabstract type parameters
+Q5: because foo does not really accept numbers of all types;
+
+
+Julia6
+
+Contacts: Innocent 
+Q1: Is the ability to define function behavior across many combinations of argument types
+Q2: include(" file1.jl" )include(" file2.jl" )
+Q3: Names of variables arein lower case.
+Q4:  In Julia overflow is the exceeding of  the maximum representable value of a given type results in a wraparound behavior:
+Q5: “a=1“means that “a“ is equal to one,while “a==1“means “a“  signs to one .
+
+
+Julia2
+
+Contacts: ENP/TTC Bicumbi
+Q1: +250728454542
+Q2: come from my knowledge,eletricity,connection,and is my dream a wanna touch to it.
+Q3: it help me to building my future,to develop my family and country,to improving my knowledy in ict.to simplyf my life in buying and selling,to create relation ship among of the all peiple.to create comfidence,to prepar new generation.to make life easy,
+Q4: in one year
+Q5: i stay in good infranstructure,high population grouth,new technology,favourable of govement policy
+
+
+Julia1
+
+Contacts: ENP/TTC Bicumbi
+Q1: it help us to building our world.and to make life complect,and to prepare in generation,and help us to develop itself, and get comfidence
+Q2: 1,11,2014
+Q3: ability.no machine i have
+Q4: only five machine.to share five thousand each month
+Q5: My family
+
+
+Julia3
+
+Contacts: ENP/TTC Bicumbi
+Q1: it help me to building my good future,and to improving my knowledge.to create unity or relationship with other wherever they are,to be developed and my country,
+Q2: is very easy and understundable to every one.using group discotion in order to meboliz it in people and make people to like it.
+Q3: biggr room,one machine on one table
+Q4: to be developed in every thng in part of economic ,culture,mind.....when i get it i wll primoted it and purchase it in way of teaching,increasing my knowledge about my country and world becouse i could read every book a wanna becouse machine,to vbe loved with society be couse am teacher
+Q5: is easy,and make my vision be good
