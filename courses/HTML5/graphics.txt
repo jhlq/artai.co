@@ -1,0 +1,101 @@
+***Graphics
+**Basics of HTML5 canvas
+*Javascript
+http://www.codecademy.com/tracks/javascript Introduction for beginners.
+
+https://developer.mozilla.org/en-US/docs/JavaScript/Guide
+
+http://teamtreehouse.com/library/websites/javascript-foundations%C2%A0
+
+http://jsbin.com/ahahoc/1/edit?html,console,output Minimal example.
+
+The javascript console can often be opened in a browser by pressing F12.
+
+*The canvas element
+"The canvas element provides scripts with a resolution-dependent bitmap canvas, which can be used for rendering graphs, game graphics, or other visual images on the fly."
+
+The canvas has been designed for pixel-based graphics, while SVG (Scalable Vector Graphics, another W3C standard) is for vector-based graphics.
+
+http://www.creativebloq.com/design-tools/data-visualization-712402 Data visualization.
+
+Supports 3D graphics with packages such as 
+http://www.babylonjs.com/ BabylonJS
+and 
+http://threejs.org/ ThreeJS.
+
+Good resources:
+<ul>
+http://www.html5canvastutorials.com/
+http://tutorials.jenkov.com/html5-canvas/index.html
+http://joshondesign.com/p/books/canvasdeepdive/title.html
+http://briangrinstead.com/canvasslides
+</ul>
+
+*Accessibility
+http://www.creativebloq.com/web-design/canvas-element-accessibility-41514740
+
+http://www.w3.org/html/wg/wiki/AddedElementCanvas
+
+*Canvas cheatsheet
+https://simon.html5.org/dump/html5-canvas-cheat-sheet.html
+
+*The canvas coordinate system
+X axis is horizontal, directed to the right
+
+Y axis is vertical, directed downwards
+
+(0 , 0) is in the top left corner
+
+*Basic example
+http://jsbin.com/susica/1/edit?html,output
+
+Only access elements when the DOM is ready: It's a good practice to have a init function, as we cannot access the elements of the page before the page has been loaded entirely and before the DOM is ready.
+
+Summary:
+<ul>
+Declare the canvas
+Get a reference to the canvas in a JavaScript variable
+Get the context for drawing in that canvas
+Specify some drawing properties
+Draw some shapes
+</ul>
+
+*Drawing Principles
+<ul>
+"stroke" means "wireframe" or "outlined", it is a prefix for setting properties or calling methods that will affect wireframe shapes, "fill" is a prefix for filled shapes.
+To set the properties of wireframe shapes use ctx.strokeStyle= ..., for filled shapes use ctx.fillStyle=... So far the values we have used are colors, expressed as strings. Example: ctx.strokeStyle  = 'blue';
+To draw a wireframe rectangle use ctx.strokeRect(x, y, width, height), to draw a filled rectangle use ctx.fillRect(x, y, width, height);
+To set the line width of wireframe shapes, use the ctx.lineWidth property. Example ctx.lineWidth = 10; ctx.strokeRect(0, 0, 100, 100);  will draw a 100x100 rectangle in wireframe mode, with an outline width of 10 pixels.
+To draw a text message use ctx.strokeText(message, x, y) or ctx.fillText(message, x, y), for wireframe text or filled text respectively.
+To set the character font use the ctx.font property; the value is a font in CSS syntax, for example:  ctx.font = 'italic 20pt Calibri';
+</ul>
+
+*Changing the coordinate system
+http://jsbin.com/vinuqa/1/edit
+
+Wrap in a function:
+http://jsbin.com/vinuqa/2/edit
+
+http://jsbin.com/vinuqa/3/edit Draw a monster.
+
+http://jsbin.com/yuhamu/2/edit Moving the monster.
+
+http://jsbin.com/yuhamu/3/edit Rotating the monster.
+
+BEWARE: all drawings to come will be in the modified coordinate system!
+
+*Saving and restoring the context
+There are two methods for saving and restoring the context properties: ctx.save() and ctx.restore().
+
+Best practice: save the context at the beginning of any function that changes the context, restore it at the end of the function!
+
+http://jsbin.com/moporu/2/edit
+
+*Project ideas
+<ul>
+Project 1 (easy): Make a small drawing by just using rectangles and text  (a car, a monster, a head, or whatever you like).
+Project 2: Make an histogram (bar charts made of filled rectangles) as an array of integer values such as: var data = {1, 12, 20, 14, 13, 9, 5}, for example.
+Project 3 (harder, for those who know JavaScript and a little bit of math): Try to draw a human shaped robot using different 2D transforms (translate, rotate). Build a hierarchic skeleton (if we rotate the arm, the forearm and the hand should follow). This can be done by having the function that draws an arm save the context, move the coordinate system, call another function that draws the forearm, that saves the context, move the coordinate system to the end of the arm, call the function that draws the hand, etc. By consecutively calling functions from one another, with each function that saves the context -- moves the coordinate system -- calls another function -- restores the context, we can build a hierarchy of coordinate systems.
+</ul>
+
+

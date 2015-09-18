@@ -1,0 +1,22 @@
+***Week 1
+**Important concepts
++put+w1concepts.txt+
+
+**Resources
+*Plain text
+<ul>
+http://artai.co/learn/neurology/w1/1.1.txt
+http://artai.co/learn/neurology/w1/1.2.txt
+http://artai.co/learn/neurology/w1/1.3.txt
+http://artai.co/learn/neurology/w1/1.4.txt
+http://artai.co/learn/neurology/w1/1.5.txt
+</ul>
+
+*PDF
++put+w1pdflinks.txt+
+
+*Videos
++put+w1videolinks.txt+
+
+**Questions
++put+w1parsedquestions.txt+

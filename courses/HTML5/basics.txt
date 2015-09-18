@@ -1,0 +1,82 @@
+***Basics
+
+Hypertext markup language
+
+&lt;!doctype html&gt;
+
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+**structural elements
+
+&lt;header&gt;
+
+&lt;footer&gt;
+
+&lt;nav&gt;
+
+&lt;article&gt; should be standalone
+
+&lt;section&gt;
+
+&lt;time&gt;
+
+&lt;figure&gt;,&lt;figcaption&gt;
+
+&lt;aside&gt;
+
+&lt;main&gt; cannot descend, unique
+
+&lt;div&gt; for other styling (pic)
+
+&lt;hn&gt; in each section, optionally nested in &lt;header&gt;, not only &lt;header&gt;. Use explicit sectioning, h1 only toplevel
+
+&lt;body&gt; section root
+
+https://github.com/h5o/h5o-chrome http://jsbin.com/binuxo/1/edit
+
+http://coding.smashingmagazine.com/2013/01/18/the-importance-of-sections/
+
+display:none or visibility:hidden silences screen readers. Use with caution, do not hide interactive elements, http://www.paciellogroup.com/blog/2012/08/notes-on-accessible-css-image-sprites/
+
+*http://jsbin.com/heboke/26/edit?html,output sample blog
+
+difference head header
+
+articles in sections
+
+header for each article
+
+&lt;figure&gt;⇐"" figcaption&gt;⇐"" figure&gt;⇐"" div=""&gt;
+
+
+
+&lt;details&gt;&lt;summary&gt; http://jsbin.com/ifofib/3/edit?html,css,output
+
+polyfills http://caniuse.com/
+
+&lt;time&gt; http://www.brucelawson.co.uk/2012/best-of-time/
+
+mark {     background-color: green;     color: yellow; }
+
+&lt;a href="link" download="newname"&gt;
+
+hard: http://jsbin.com/amoxah/2/edit?html,js,output save text as file
+
+&lt;span translate="no"
+
+
+
+**Microdata [medium]
+
+Used for search engine optimization and search result presentation
+
+http://www.w3.org/TR/microdata/
+
+http://journal.code4lib.org/articles/6400
+
+http://diveinto.html5doctor.com/extensibility.html
+
+http://jsbin.com/uquboc/144/edit?html,output
+
+http://schema-creator.org/
+

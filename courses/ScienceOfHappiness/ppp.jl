@@ -2,9 +2,13 @@
 function skipto(str,char)
 	for ci in 1:length(str)
 		#print(str[ci])
-		if str[ci]==char
-			return ci
-		end
+		try
+			if str[ci]==char
+				return ci
+			end
+		catch er
+			error("There was a problem reading this at index $ci: $(str[ci-1])")
+		end	
 	end
 	return 0
 end
@@ -17,9 +21,15 @@ function process(fname,title)
 #		println(text[linkloc])
 		linkend=skipto(text[linkloc[end]:end],' ')
 		lineend=skipto(text[linkloc[end]:end],'\n')
+		#println("$(linkloc[1]),$linkend,$lineend")
+		if linkend==0 #why does it become 0..?
+			linkend=lineend
+		end
 		linkend=min(linkend,lineend)
 		linkloc=linkloc[1]:linkloc[end]+linkend-2
 		link=text[linkloc]
+		#println(link)
+		#println("ll: $linkloc,le: $lineend, linkend")
 		if text[linkloc[1]-1]=='\n' && lineend>linkend
 			linktextloc=linkloc[end]+1:linkloc[4]+lineend-2
 			linktext=text[linktextloc]
@@ -32,7 +42,7 @@ function process(fname,title)
 			text=text[1:linkloc[1]-1]*htmltext*text[linkloc[end]+1:end]
 		end
 		linkloc=search(text[linkloc[1]+l:end],"http")+linkloc[1]+l-1
-		#println(text)
+		#println(htmltext)
 	end
 	hloc=search(text,"*")
 	while !isempty(collect(hloc))
@@ -79,7 +89,8 @@ function process(fname,title)
 	</head>
 	<body>
 	<nav>
-	<a href="index.html">Index.</a>
+	<a href="../index.html">Learn index.</a>
+	<a href="index.html">Happiness index.</a>
 	<a href="week1.html">Week 1.</a>
 	<a href="week2.html">Week 2.</a>
 	</nav>
@@ -94,5 +105,6 @@ function process(fname,title)
 #	print(text)
 end
 
-process("index","Science of Happiness")
+process("index","Index")
 process("week1","Week 1")
+process("week2","Week 2")
