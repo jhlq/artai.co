@@ -1,0 +1,54 @@
+
+Question 1 
+Ion channels are made of what?
+
+ Lipids
+Nucleic acids
+Carbon nanotubes
+Proteins 
+
+
+Question 2 
+What structural feature of an ion channel spans the lipid membrane?
+
+ Alpha helix 
+Beta sheet
+Coiled coil domains
+N-terminal domain
+
+
+Question 3 
+The ion channel pore is largely composed of what?
+
+ Air
+Water 
+Lipids
+Metal
+
+
+Question 4 
+Which statement about transporters (as opposed to ion channels) is not true?
+
+ Transporters move ions at slower rates than ion channels
+Transporters passively transport ions along the electro-chemical gradient 
+Transporters can work against the electro-chemical gradient
+Transporters do not have an aqueous pore
+
+
+Question 5 
+Which of the following statements is not true
+
+ Ion channels are characterized by gating and selectivity
+Ion channels can flip from open (conducting) to closed (non-conducting) states on the microsecond timescale
+Changing the open probability of ion channels is an important way to regulate transmembrane current flow
+Single ion channels can have unitary conductances of 10 nS 
+
+
+Question 6 
+Which of the following statements is not true?
+
+ Selectivity is a preference of ion channels to conduct a specific ion
+The degree of selectivity can vary between different ion channels
+The degree of ion selectivity is the same for all ion channels 
+There are many types of non-selective channels
+
