@@ -16,7 +16,7 @@ files=["index.txt","week1.txt"]
 
 function process(fname,title)
 	text=readall("$fname.txt")
-	linkloc=search(text,"http")
+	linkloc=search(text,"\nhttp")
 	while !isempty(collect(linkloc))
 #		println(text[linkloc])
 		linkend=skipto(text[linkloc[end]:end],' ')
@@ -26,7 +26,7 @@ function process(fname,title)
 			linkend=lineend
 		end
 		linkend=min(linkend,lineend)
-		linkloc=linkloc[1]:linkloc[end]+linkend-2
+		linkloc=linkloc[2]:linkloc[end]+linkend-2
 		link=text[linkloc]
 		#println(link)
 		#println("ll: $linkloc,le: $lineend, linkend")
@@ -41,7 +41,7 @@ function process(fname,title)
 			l=length(htmltext)
 			text=text[1:linkloc[1]-1]*htmltext*text[linkloc[end]+1:end]
 		end
-		linkloc=search(text[linkloc[1]+l:end],"http")+linkloc[1]+l-1
+		linkloc=search(text[linkloc[1]+l:end],"\nhttp")+linkloc[1]+l-1
 		#println(htmltext)
 	end
 	hloc=search(text,"*")
@@ -116,4 +116,5 @@ end
 
 process("index","Index")
 process("week1","Week 1")
-#process("week2","Week 2")
+process("week2","Week 2")
+process("week3","Week 3")

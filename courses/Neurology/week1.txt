@@ -34,29 +34,33 @@ Arborisation: Branching.
 **Resources
 *Plain text
 <ul>
-http://artai.co/learn/neurology/w1/1.1.txt
-http://artai.co/learn/neurology/w1/1.2.txt
-http://artai.co/learn/neurology/w1/1.3.txt
-http://artai.co/learn/neurology/w1/1.4.txt
-http://artai.co/learn/neurology/w1/1.5.txt
+http://artai.co/learn/neurology/1.1.txt
+http://artai.co/learn/neurology/1.2.txt
+http://artai.co/learn/neurology/1.3.txt
+http://artai.co/learn/neurology/1.4.txt
+http://artai.co/learn/neurology/1.5.txt
 </ul>
 
 *PDF
 <ul>
-http://artai.co/learn/neurology/w1/1_1_Introduction.pdf
-http://artai.co/learn/neurology/w1/1_2_Cell_Membrane.pdf
-http://artai.co/learn/neurology/w1/1_3_Ion_Channels.pdf
-http://artai.co/learn/neurology/w1/1_4_MembranePotential.pdf
-http://artai.co/learn/neurology/w1/1_5_CableProperties.pdf
+http://artai.co/learn/neurology/1_1_Introduction.pdf 1.1 (5.7 MB)
+http://artai.co/learn/neurology/1_2_Cell_Membrane.pdf 1.2 (1.3 MB)
+http://artai.co/learn/neurology/1_3_Ion_Channels.pdf 1.3 (8.1 MB)
+http://artai.co/learn/neurology/1_4_MembranePotential.pdf 1.4 (1 MB)
+http://artai.co/learn/neurology/1_5_CableProperties.pdf 1.5 (0.9 MB)
 </ul>
 *Videos
 <ul>
-http://artai.co/learn/neurology/w1/1.1-hI3Epqe6CGM.3gp
-http://artai.co/learn/neurology/w1/1.2-zX5RieqdNrE.3gp
-http://artai.co/learn/neurology/w1/1.3-76kJ0vXMfRA.3gp
-http://artai.co/learn/neurology/w1/1.4-nl_y8Kr38P8.3gp
-http://artai.co/learn/neurology/w1/1.5-Iei7nhceY0Q.3gp
+http://artai.co/learn/neurology/1.1-hI3Epqe6CGM.3gp 1.1 (4.4 MB)
+http://artai.co/learn/neurology/1.2-zX5RieqdNrE.3gp 1.2 (6.6 MB)
+http://artai.co/learn/neurology/1.3-76kJ0vXMfRA.3gp 1.3 (10.7 MB)
+http://artai.co/learn/neurology/1.4-nl_y8Kr38P8.3gp 1.4 (12.1 MB)
+http://artai.co/learn/neurology/1.5-Iei7nhceY0Q.3gp 1.5 (7.8 MB)
 </ul>
+
+*Calculations in Julia
+http://artai.co/learn/neurology/w1calculations.jl
+
 **Questions
 
 *Question 1.2.1 
