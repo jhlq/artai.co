@@ -114,7 +114,8 @@ function process(fname,title)
 #	print(text)
 end
 
-process("index","Index")
-process("week1","Week 1")
-process("week2","Week 2")
-process("week3","Week 3")
+pagestoprocess=readdlm("pages.txt",' ')
+for pi in 1:size(pagestoprocess,1)
+	process(pagestoprocess[pi,1],pagestoprocess[pi,2])
+end
+

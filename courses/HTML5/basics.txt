@@ -1,13 +1,11 @@
 ***Basics
+HTML stands for HyperText Markup Language
 
-Hypertext markup language
+Begin documents with &lt;!doctype html&gt;
 
-&lt;!doctype html&gt;
+Include javascript files like so: &lt;script src="script.js"&gt;&lt;/script&gt;
 
-&lt;script src="script.js"&gt;&lt;/script&gt;
-
-**structural elements
-
+**Structural elements
 &lt;header&gt;
 
 &lt;footer&gt;
@@ -28,7 +26,7 @@ Hypertext markup language
 
 &lt;div&gt; for other styling (pic)
 
-&lt;hn&gt; in each section, optionally nested in &lt;header&gt;, not only &lt;header&gt;. Use explicit sectioning, h1 only toplevel
+&lt;hn&gt; (where n = 1, 2, 3... 7) in each section, optionally nested in &lt;header&gt;, not only &lt;header&gt;. Use explicit sectioning and h1 only at toplevel
 
 &lt;body&gt; section root
 
@@ -38,7 +36,7 @@ http://coding.smashingmagazine.com/2013/01/18/the-importance-of-sections/
 
 display:none or visibility:hidden silences screen readers. Use with caution, do not hide interactive elements, http://www.paciellogroup.com/blog/2012/08/notes-on-accessible-css-image-sprites/
 
-*http://jsbin.com/heboke/26/edit?html,output sample blog
+http://jsbin.com/heboke/26/edit?html,output sample blog
 
 difference head header
 
@@ -65,9 +63,8 @@ hard: http://jsbin.com/amoxah/2/edit?html,js,output save text as file
 &lt;span translate="no"
 
 
-
-**Microdata [medium]
-
+<yellow>
+**Microdata
 Used for search engine optimization and search result presentation
 
 http://www.w3.org/TR/microdata/
@@ -79,4 +76,4 @@ http://diveinto.html5doctor.com/extensibility.html
 http://jsbin.com/uquboc/144/edit?html,output
 
 http://schema-creator.org/
-
+</span>

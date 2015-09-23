@@ -230,3 +230,64 @@ Project 3 (harder): Try to draw the current image of a video played in backgroun
 Project 4 (follow-up of project 3): You can also use the trick with the video to create animated textures for the eyes, skin, etc.
 </ul>
 </span>
+
+**Colors, gradients, patterns, shadows, etc.
+http://www.w3.org/TR/css3-color/ You can use the same syntax for colors that is supported by CSS3.
+
+http://jsbin.com/duwaxa/3/edit Drawing transparent rectangles.
+
+*Gradients
+http://jsbin.com/ruguxi/2/edit Gradient example.
+
+The concept of linear gradient is seen as an "invisible" rectangle in which a set of colors are interpolated along a line.
+
+http://jsbin.com/ruguxi/4/edit Changing gradient direction.
+
+http://jsbin.com/baluxa/3/edit Chopping up the gradient rectangle.
+
+http://jsbin.com/dekiji/2/edit Like previous but with a loop.
+
+http://jsbin.com/dekiji/4/edit Gradient wireframes.
+
+http://jsbin.com/ruvuta/1/edit Narrow gradient. Try making it wide.
+
+http://jsbin.com/dekiji/6/edit Many small gradient rectangles.
+
+http://jsbin.com/zefogoneko/1/edit Sharper transitions.
+
+http://jsbin.com/mijoni/2/edit Radial rainbow gradient.
+
+http://jsbin.com/fufelef/1/edit?html Asymetric.
+
+*Painting with patterns
+http://jsbin.com/qezojo/1/edit
+
+http://jsbin.com/befiti/3/edit Repeating, try: repeat-x, repeat-y or no-repeat in the createPattern function.
+
+<red>
+*Multiple image loader
+http://jsbin.com/fufiyu/6/edit For drawing with multiple patterns.
+</span>
+
+*Shadows
+http://jsbin.com/wivubi/3/edit
+
+http://jsbin.com/gokemu/1/edit Unwanted shadow.
+
+http://jsbin.com/kedobi/2/edit Hiding unwanted shadows.
+
+*Styling lines
+http://jsbin.com/dacuco/2/edit Line thickness.
+
+http://jsbin.com/yaliya/2/edit Line end caps.
+
+http://jsbin.com/dozida/2/edit Corners.
+
+http://jsbin.com/bokusa/3/edit Limiting corner length in narrow angles.
+
+*Project ideas
+<ul>
+Project 1 (easy): Take any of the previous proposed projects, and improve them with shadows, gradients, patterns, etc.
+Project 2 (medium): Come up with your own artistic creation.
+Project 3 (hard): Try to use the multiple image loader showed in the course, in one of your projects.
+</ul>
