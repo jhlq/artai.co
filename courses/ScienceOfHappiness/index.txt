@@ -7,7 +7,7 @@ https://www.edx.org/course/science-happiness-uc-berkeleyx-gg101x-1 a course at e
 <ul>
 http://artai.co/learn/happiness/week1.html Introduction to the Science of Happiness
 http://artai.co/learn/happiness/week2.html The Power of Social Connection
-Compassion & Kindness
+http://artai.co/learn/happiness/week3.html Compassion & Kindness
 Cooperation & Reconciliation 
 Mindfulness, Attention, and Focus
 Mental Habits of Happiness

@@ -114,7 +114,7 @@ function process(fname,title)
 #	print(text)
 end
 
-pagestoprocess=readdlm("pages.txt",' ')
+pagestoprocess=readdlm("pages.txt",'/')
 for pi in 1:size(pagestoprocess,1)
 	process(pagestoprocess[pi,1],pagestoprocess[pi,2])
 end
