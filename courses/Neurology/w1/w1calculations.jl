@@ -12,6 +12,6 @@ R=8.3144621 #J/(mol*K)
 F= 96485.3329 #s A / mol
 z=1
 T=310.15
-cQ=5/150
+cQ=5/150 #quotient of concentration outside divided by ion concentration inside
 
 Eca=R*T/(z*F)*log(cQ)

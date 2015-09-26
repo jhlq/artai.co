@@ -1,0 +1,25 @@
+***Week 1
+**Important concepts
+*1. Voltage-gated channels
+<ul>
+Voltage-gated channel: A ion tunnel that is more likely to be open at certain membrane potentials.
+</ul>
+
+*2. Voltage-gating kinetics
+<ul>
+Kinetics: From Greek "kinesis", movement or to move.
+Unit us: Microseconds, actually written µs, one millionth of a second.
+</ul>
+
+*4 Action potential propagation
+<ul>
+Axial: Along a segment.
+Myelination: Wrapping axonal segments with electrically insulating material.
+</ul>
+
+*5 Whole-cell recordings
+<ul>
+Pipette: Thin tube that can suck up fluids.
+Patch-clamp: Trap a piece of cell membrane for electrical measuring.
+Giga-seal: Electrical resistance seal enabling accurate measurements.
+</ul>
