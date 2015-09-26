@@ -11,6 +11,13 @@ Kinetics: From Greek "kinesis", movement or to move.
 Unit us: Microseconds, actually written µs, one millionth of a second.
 </ul>
 
+*3. The action potential
+<ul>
+Action potential threshold: A membrane potential at which a current spike event is initiated.
+Neocortical: Substance in the neocortex, the outer part of the brain.
+GABAergic: Responds to a signaling GABA molecule with inhibitory activity.
+</ul>
+
 *4 Action potential propagation
 <ul>
 Axial: Along a segment.
