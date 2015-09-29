@@ -1,4 +1,4 @@
-***Week 1
+***Week 2
 **Important concepts
 *1. Voltage-gated channels
 <ul>

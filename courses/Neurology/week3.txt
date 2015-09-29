@@ -1,0 +1,35 @@
+***Week 3
+**Important concepts
+*1. Synaptic transmission
+<ul>
+Vesicle: Container inside cells.
+Exocytosis: Expulsion of intracellular molecules contained in a vesicle.
+Quantal: Not continuous, ice is quantal, water is not.
+Synaptic: Relating to synapses, the sites where messages are conveyed between cells.
+Junction: A place where two things meet.
+</ul>
+
+*2. Neurotransmitter release
+<ul>
+Cytosolic: Water-soluble components of cell cytoplasm
+Bouton: Neuronal component that connects to other neurons.
+Protein complex: Proteins arranged in a structure.
+</ul>
+
+*3. Presynaptic dynamics
+<ul>
+Facilitation: Amplification.
+Post-tetanic: After repetitive pulses.
+</ul>
+
+*4. Presynaptic modulation
+<ul>
+Metabotropic: Receptor that acts through a secondary messenger.
+Ionotropic: Opens or closes channels.
+Plasticity: Ability to change.
+</ul>
+
+*5. Electron microscopy
+<ul>
+
+</ul>
