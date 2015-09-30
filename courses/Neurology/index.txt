@@ -11,6 +11,7 @@ Question answers are available in files named according to section and question 
 <ul>
 http://artai.co/learn/neurology/week1.html Week 1.
 http://artai.co/learn/neurology/week2.html Week 2.
+http://artai.co/learn/neurology/week3.html Week 3.
 </ul>
 
 **Outline

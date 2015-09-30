@@ -2,26 +2,31 @@ function parseq(section)
 	questions=""
 	answers=String[]
 	text=readall("$(section)qraw.txt")
-	text=replace(text,"- incorrect"," ")
-	text=replace(text,"- correct"," ")
+	text=replace(text,"- incorrect","- correct")
+	#text=replace(text,"- correct"," ")
 	text=replace(text,"You have used 1 of 1 submissions","12345")
-	text=replace(text,"(1 point possible)\n","\n<ul>")
-	text=replace(text,"(1/1 point)\n","\n<ul>")
+	#text=replace(text,"(1 point possible)\n","\n<ul>")
+	#text=replace(text,"(1/1 point)\n","\n<ul>")
 	text=replace(text,"\nExplanation","</ul>\nExplanatio")
 	#text=replace(text,"?\n","?\n<ul>\n")
-	f=open("$(section)qraw.txt","w")
+	f=open("$(section)qrawp.txt","w")
 	write(f,text)
 	close(f)
-	f=open("$(section)qraw.txt")
+	f=open("$(section)qrawp.txt")
 	r=readline(f)
 	while !eof(f)
 		if r[1]=='Q' && r[1:9]=="Question "
 			#questions=questions*"\n*Question $section."*r[10:11]*"\n"*readline(f)*"\n<ul>\n"
 			questions*="\n*Question $section."*r[10:11]*"\n"
 			readline(f)
+			questions*=readline(f)*"<ul>\n"
 			#println(questions)
-			for i in 1:7
-				questions*=readline(f)
+			for i in 1:5
+				s=readline(f)
+				if contains(s,"- correct")
+					s=s[1:(length(s)-9)/2]*"\n"
+				end
+				questions*=s
 			end
 #			ops=readline(f)
 #			ops2=replace(ops,"  ","\t")
@@ -57,9 +62,9 @@ function parseq(section)
 #	f=open("$(section)q.txt","w")
 #	write(f,questions)
 #	close(f)
-	f=open("w2parsedq.txt","a")
+	f=open("w3parsedq.txt","a")
 	write(f,questions)
 	close(f)
 	return questions,answers
 end
-parseq("2.1");parseq("2.2");parseq("2.3");parseq("2.4");parseq("2.5")
+parseq("3.1");parseq("3.2");parseq("3.3");parseq("3.4");parseq("3.5")
