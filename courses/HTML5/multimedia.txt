@@ -1,26 +1,35 @@
 ***HTML5 Multimedia
+**The &lt;video&gt; element
+The video element replaces embedded flash objects. Example: 
+http://jsbin.com/hobeke/1/edit?html,output
 
-**The <video> element
-The video element replaces embedded flash objects. Example: http://jsbin.com/hobeke/1/edit?html,output
 It is part of the DOM and can be influenced with javascript and CSS.
+
 <yellow> Videos from sites like youtube cannot be directly embedded because of commercial reasons, instead use a iframe: https://www.youtube.com/watch?v=ZH1XOsv8Oyo </span>
-Good practice: add text that is displayed in place of the video when the browser does not support the <video> element.
+
+Good practice: add text that is displayed in place of the video when the browser does not support the &lt;video&gt; element.
+
 *Codecs
 The recommended codec is H264/mp4. <yellow>For more compatibility provide several versions of your video with different encodings.</span>
+
 *Suggested readings
 <ul>
 http://www.jwplayer.com/html5/
 https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/ControllingMediaWithJavaScript/ControllingMediaWithJavaScript.html
 </ul>
 
-**The <audio> element
+**The &lt;audio&gt; element
 Very similiar to the video element. Example: http://jsbin.com/gazoye/8/edit?html,output
-<yellow>Supports sound effects: http://www.w3.org/TR/webaudio/ </span>
-Good practice: propose to download the audio file if the <audio> element is not supported.
 
-**Attributes of <audio> and <video>
-<green>Attributes can be added like so: <video preload="none"> </span>
+<yellow>Supports sound effects: http://www.w3.org/TR/webaudio/ </span>
+
+Good practice: propose to download the audio file if the &lt;audio&gt; element is not supported.
+
+**Attributes of &lt;audio&gt; and &lt;video&gt;
+<green>Attributes can be added like so: &lt;video preload="none"&gt; </span>
+
 Good practice: use preload="none" to avoid unexpected data charges.
+
 Other attributes:
 <ul>
 src: source of content.
@@ -29,7 +38,7 @@ autoplay: tells the browser to start playing the audio stream automatically as s
 loop:  indicates to play the audio stream in loop mode (start again when finished).
 </ul>
 
-<yellow>
+<div class="yellow">
 **Examples
 <ul>
 http://jsbin.com/razigi/15/edit Styling with CSS.
@@ -38,15 +47,13 @@ Fullscreen (WARNING, starts loading video immediately): http://jsbin.com/yoquli/
 http://www.w3.org/2010/05/video/mediaevents.html Events and properties.
 http://jsbin.com/temupe/1/edit Custom controls
 http://jsbin.com/nefijo/5/edit Playlist 
-</span>
-<red>
 http://output.jsbin.com/fezome/5 Transformable video.
 http://jsbin.com/etinat/12/edit Tracking events.
 http://jsbin.com/johiza/1/edit Buffering.
 http://www.w3.org/2010/Talks/0430-www2010-plh/video-player.xhtml Custom SVG controls.
 http://jsbin.com/cumaho/3/edit Custom video player.
-</span>
 </ul>
+</div>
 
 **Projects
 <ul>
@@ -56,7 +63,7 @@ Project 3 (with JavaScript knowledge): try to play a video file or an audio file
 </ul>
 
 **Subtitles
-The new HTML5 <track> element is useful for adding closed captions, subtitles, descriptions, and metadata to your videos.
+The new HTML5 &lt;track&gt; element is useful for adding closed captions, subtitles, descriptions, and metadata to your videos.
 
 Subtitles are for words whereas closed captions are for general sounds.
 
@@ -64,7 +71,7 @@ Subtitles are for words whereas closed captions are for general sounds.
 
 http://jsbin.com/luyazi/2/edit?html,output
 
-<yellow>
+<div class="yellow">
 External resources:
 <ul>
 http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element
@@ -74,7 +81,7 @@ http://www.storiesinflight.com/js_videosub/#code
 http://demosthenes.info/blog/584/Creating-And-Validating-WebVTT-Subtitles
 http://html5videoguide.net/presentations/WebVTT/#title-slide
 </ul>
-</span>
+</div>
 
 The WebVTT format is used for subtitles.
 
@@ -82,7 +89,7 @@ http://dev.w3.org/html5/webvtt/
 
 https://developer.mozilla.org/fr/docs/Web/API/Web_Video_Text_Tracks_Format
 
-medium: Opensource software for video encoding: https://handbrake.fr/
+yellow: Opensource software for video encoding: https://handbrake.fr/
 
 http://www.universalsubtitles.org/
 
@@ -91,17 +98,17 @@ Subtitles can be styled: http://jsbin.com/lopudu/5/edit?html,output
 Extract from .vtt file:
 
 <code>
-00:00:06.000 --\> 00:00:10.000 line:5%
-This cue is positioned at the top of the video
-00:00:11.000 --\> 00:00:15.000 position:5% align:start
-This cue is positioned at the left side of the video.
-00:00:16.000 --\> 00:00:20.000 position:95% align:end
+00:00:06.000 --&gt; 00:00:10.000 line:5%<br>
+This cue is positioned at the top of the video<br>
+00:00:11.000 --&gt; 00:00:15.000 position:5% align:start<br>
+This cue is positioned at the left side of the video.<br>
+00:00:16.000 --&gt; 00:00:20.000 position:95% align:end<br>
 And this one ate the right side.
 </code>
 
 To read the whole file find the link in the lopudu5 example above.
 
-Use \<v Name\> to color code subtitles according to speaker.
+Use &lt;v Name&gt; to color code subtitles according to speaker.
 
 <yellow>
 https://developer.mozilla.org/fr/docs/Web/API/Web_Video_Text_Tracks_Format
@@ -122,7 +129,7 @@ Project 2 (easy): Try to style some of the subtitles, set their position, etc.
 Project 3 (with JavaScript knowledge): Try to write a karaoke player with a small list of songs we can choose from.
 </ul>
 
-<yellow>
+<section class="yellow">
 **Enchanced media players
 *Video
 http://www.streamingmedia.com/Articles/Editorial/Featured-Articles/How-to-Create-Interactive-HTML5-Video-97461.aspx
@@ -169,4 +176,4 @@ http://paint.gexsoft.com/
 *Microphone
 https://webaudiodemos.appspot.com/
 
-</span>
+</section>

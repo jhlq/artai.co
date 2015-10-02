@@ -12,7 +12,18 @@ function skipto(str,char)
 	end
 	return 0
 end
-files=["index.txt","week1.txt"]
+function makelistarray(list)
+	listarray=String[]
+	n1=skipto(list,'\n')
+	push!(listarray,list[1:n1])
+	n2=skipto(list[n1+1:end],'\n')+n1
+	while n2>n1
+		push!(listarray,list[n1:n2])
+		n1=n2
+		n2=skipto(list[n1+1:end],'\n')+n1
+	end
+	return listarray
+end
 
 function process(fname,title)
 	text=readall("$fname.txt")
@@ -58,8 +69,9 @@ function process(fname,title)
 	while !isempty(collect(ulloc))
 		tulloc=search(text[ulloc[end]:end],"</ul>")+ulloc[end]-1
 		list=text[ulloc[end]+2:tulloc[1]-2]
-		listarray=readdlm(IOBuffer(list*"\n"),'\n')
-		#show(list)
+		listarray=makelistarray(list*"\n ")
+		#show(list);println("\n\n\n")
+		#show(listarray);println("\n\n\n")
 		htmltext=""
 		for li in listarray
 			htmltext*="<li>$li</li>\n"
@@ -82,8 +94,19 @@ function process(fname,title)
 		text=text[1:nnloc[1]]*htmltext*text[nnnloc[1]:end]
 		nnloc=search(text[nnloc[end]:end],"\n\n")+nnloc[end]-1
 	end
+	medloc=search(text,"\nyellow:")
+	while !isempty(collect(medloc))
+		nloc=search(text[medloc[end]:end],"\n")+medloc[end]-1
+		p=text[medloc[end]+1:nloc[1]-1]
+		htmltext="""<span class="yellow">$p</span>"""
+		text=text[1:medloc[1]]*htmltext*text[nloc[1]:end]
+		medloc=search(text[medloc[end]:end],"\nyellow:")+medloc[end]-1
+	end
 	while contains(text,"<easy>")
-	text=replace(text,"<easy>","""<span class="easy">""")
+		text=replace(text,"<easy>","""<span class="easy">""")
+	end
+	while contains(text,"<green>")
+		text=replace(text,"<green>","""<span class="easy">""")
 	end
 	while contains(text,"<yellow>")
 		text=replace(text,"<yellow>","""<span class="medium">""")

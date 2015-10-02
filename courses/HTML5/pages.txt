@@ -1,4 +1,5 @@
-index.txt Index
-basics.txt Basics
-multimedia.txt Multimedia
-graphics.txt Graphics
+index/Index
+introduction/Introduction
+basics/Basics
+multimedia/Multimedia
+graphics/Graphics

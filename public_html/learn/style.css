@@ -7,6 +7,12 @@ span.medium {
 span.hard {
     background-color: red;
 }
+section.yellow {
+    background-color: yellow;
+}
+div.yellow {
+    background-color: yellow;
+}
 
 header, 
 nav, 

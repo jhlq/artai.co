@@ -62,7 +62,7 @@ Draw some shapes
 
 *Drawing Principles
 <ul>
-"stroke" means "wireframe" or "outlined", it is a prefix for setting properties or calling methods that will affect wireframe shapes, "fill" is a prefix for filled shapes.
+The "stroke" means "wireframe" or "outlined", it is a prefix for setting properties or calling methods that will affect wireframe shapes, "fill" is a prefix for filled shapes.
 To set the properties of wireframe shapes use ctx.strokeStyle= ..., for filled shapes use ctx.fillStyle=... So far the values we have used are colors, expressed as strings. Example: ctx.strokeStyle  = 'blue';
 To draw a wireframe rectangle use ctx.strokeRect(x, y, width, height), to draw a filled rectangle use ctx.fillRect(x, y, width, height);
 To set the line width of wireframe shapes, use the ctx.lineWidth property. Example ctx.lineWidth = 10; ctx.strokeRect(0, 0, 100, 100);  will draw a 100x100 rectangle in wireframe mode, with an outline width of 10 pixels.

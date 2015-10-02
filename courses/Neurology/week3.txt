@@ -74,7 +74,7 @@ What is the approximate diameter of a synaptic vesicle?
 </ul>
 
 *Question 3.1.4 
-Neurons mainly communicate with each other at specialised juntions called synapses, with the presynaptic bouton containing many synaptic vesicles. What is the approximate length scale of a typical synapse in the central nervous system (i.e. approximate diameter of the synaptic contact area)?
+Neurons mainly communicate with each other at specialised junctions called synapses, with the presynaptic bouton containing many synaptic vesicles. What is the approximate length scale of a typical synapse in the central nervous system (i.e. approximate diameter of the synaptic contact area)?
 <ul>
 5 um
 500 nm 
