@@ -62,9 +62,9 @@ function parseq(section)
 #	f=open("$(section)q.txt","w")
 #	write(f,questions)
 #	close(f)
-	f=open("w3parsedq.txt","a")
+	f=open("w4parsedq.txt","a")
 	write(f,questions)
 	close(f)
 	return questions,answers
 end
-parseq("3.1");parseq("3.2");parseq("3.3");parseq("3.4");parseq("3.5")
+s=4;parseq("$(s).1");parseq("$(s).2");parseq("$(s).3");parseq("$(s).4");parseq("$(s).5")
