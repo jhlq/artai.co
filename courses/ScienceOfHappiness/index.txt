@@ -3,7 +3,7 @@ These notes are based on
 https://www.edx.org/course/science-happiness-uc-berkeleyx-gg101x-1 a course at edX.
 
 
-8 weeks of content:
+Content:
 <ul>
 http://artai.co/learn/happiness/week1.html Introduction to the Science of Happiness
 http://artai.co/learn/happiness/week2.html The Power of Social Connection
@@ -13,7 +13,7 @@ http://artai.co/learn/happiness/week5.html Review
 Mindfulness, Attention, and Focus
 Mental Habits of Happiness
 Gratitude
-New Frontiers and Happiness “Fit”
+New Frontiers and Happiness "Fit"
 </ul>
 
 https://courses.edx.org/asset-v1:BerkeleyX+GG101x+3T2015+type@asset+block/Bibliography_Nov._14.pdf Bibliography.
