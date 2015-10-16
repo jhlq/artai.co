@@ -24,6 +24,7 @@ function parseq(section)
 			for i in 1:5
 				s=readline(f)
 				if contains(s,"- correct")
+					#println(s,length(s))
 					s=s[1:(length(s)-9)/2]*"\n"
 				end
 				questions*=s
@@ -62,9 +63,9 @@ function parseq(section)
 #	f=open("$(section)q.txt","w")
 #	write(f,questions)
 #	close(f)
-	f=open("w4parsedq.txt","a")
+	f=open("parsedq.txt","a")
 	write(f,questions)
 	close(f)
 	return questions,answers
 end
-s=4;parseq("$(s).1");parseq("$(s).2");parseq("$(s).3");parseq("$(s).4");parseq("$(s).5")
+s=5;parseq("$(s).1");parseq("$(s).2");parseq("$(s).3");parseq("$(s).4");parseq("$(s).5")

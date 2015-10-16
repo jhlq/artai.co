@@ -1,45 +1,4 @@
-***Week 5
-**Important concepts
-*1. GABAergic inhibition
-<ul>
-GABA: Neurotransmitter gamma-Aminobutyric acid
-Inhibition: Decrease in activity
-Enzymatic step: Transformation of a molecule through another molecule.
-Cytosol: Internal cell fluid.
-</ul>
 
-*2. Inhibitory synaptic conductances
-<ul>
-Shunting: Directing flow.
-</ul>
-
-*3. Benzodiazepines
-<ul>
-Compound: Assembly of proteins.
-Antagonist: Receptor blocker.
-</ul>
-
-*4. GABAergic projections
-<ul>
-Thalamus: Connective brain centra.
-</ul>
-
-*5. Neocortical inhibition
-<ul>
-Volume transmission: Diffusion through extracellular fluid.
-</ul>
-
-**Resources
-*Plain text
-<ul>
-http://artai.co/learn/neurology/5.1.txt
-http://artai.co/learn/neurology/5.2.txt
-http://artai.co/learn/neurology/5.3.txt
-http://artai.co/learn/neurology/5.4.txt
-http://artai.co/learn/neurology/5.5.txt
-</ul>
-
-**Questions
 *Question 5.1.1 
 Which of the following statements about the neurotransmitter GABA is correct?
 <ul>
