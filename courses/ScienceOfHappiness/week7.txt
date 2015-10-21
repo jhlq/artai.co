@@ -10,12 +10,12 @@ http://greatergood.berkeley.edu/article/item/how_to_trick_your_brain_for_happine
 
 “Neurons that fire together, wire together.”
 
-#As the brain changes, the mind changes.
+###As the brain changes, the mind changes.
 More activation in the left prefrontal cortex is associated with more positive emotions. So as there is greater activation in the left, front portion of your brain relative to the right, there is also greater well-being. That’s probably in large part because the left prefrontal cortex is a major part of the brain for controlling negative emotion. So if you put the breaks on the negative, you get more of the positive.
 
 Stress releases substances that literally corrode the brain. Some adults with a history of stress have lost up to 25 percent of the memory forming hippocampus. This is a good reason to relax.
 
-#As the mind changes, the brain changes.
+###As the mind changes, the brain changes.
 These changes happen in temporary and in lasting ways. In terms of temporary changes, the flow of different neurochemicals in the brain will vary at different times. Research suggests that when people practice gratitude, they experience a general alerting and brightening of the mind, and that’s probably correlated with more of the neurotransmitter norepinephrine.
 
 Now the mind also can change the brain in lasting ways. In other words, what flows through the mind sculpts the brain. The mind can be defined as the flow of immaterial information through the nervous system—all the signals being sent, most of which are happening forever outside of consciousness. As the mind flows through the brain, as neurons fire together in particularly patterned ways based on the information they are representing, those patterns of neural activity change neural structure, connecting more strongly.
@@ -30,7 +30,7 @@ Use it or lose it, applies to the brain as well as to other aspects of life.
 
 Experience really matters. It doesn’t matter only in our moment-to-moment well-being—how it feels to be me—but it really matters in the lasting residues that it leaves behind, woven into our very being.
 
-#You can use the mind to change the brain to change the mind for the better.
+###You can use the mind to change the brain to change the mind for the better.
 This is known as “self-directed neuroplasticity.” Neuroplasticity refers to the malleable nature of the brain, and it’s constant, ongoing. Self-directed neuroplasticity means doing it with clarity and skillfulness and intention.
 
 The key to it is a controlled use of attention. Attention is like a spotlight, to be sure, shining on things within our awareness.
@@ -41,7 +41,7 @@ Neural substrates are built reflecting that upon which the focus of our awarenes
 
 So gaining more control over attention one way or another is really crucial, whether it’s through the practice of mindfulness, for instance, or through gratitude practices, where we count our blessings. Those are great ways to gain control over your attention because there you are, for 30 seconds or 30 minutes, coming back to focus on an object of awareness.
 
-#Taking in the good.
+###Taking in the good.
 <ul>
 Let a good fact become a good experience. Be glad for the little things.
 Really savor this positive experience.
@@ -158,6 +158,9 @@ Your self-critical voice becomes more benevolent which fosters personal growth.
 <ul>
 http://ggia.berkeley.edu/practice/self_compassion_break
 http://ggia.berkeley.edu/practice/how_would_you_treat_a_friend
+http://ggia.berkeley.edu/practice/best_possible_self_for_relationships
+http://ggia.berkeley.edu/practice/goal_visualization
+http://ggia.berkeley.edu/practice/meaningful_pictures
 </ul>
 
 **Finding Flow.
@@ -218,6 +221,17 @@ The potential for failure. Professional actors learn not to ignore the feeling o
 Group flow happens when many tensions are in perfect balance: between convention and novelty, between structure and improvisation, between the critical, analytic mind and the freewheeling, outside-the-box mind, between listening to the rest of the group and speaking out with your own individual voice. 
 
 The most effective business teams balance these tensions in the same way: They listen closely, they are concentrated on the task, they communicate openly so that everyone gets immediate feedback, and they trust that genius will emerge from the group, not from any one member. When that happens, groups find flow—and with it, studies show, comes more effective team performance, greater innovation, and higher workplace satisfaction. It’s good for the organization, and it’s good for its workers, too.
+
+**Terms of happiness
+<ul>
+Optimism: Within the field of positive psychology optimism is defined as the expectation that the future will be socially desirable, good, and pleasurable. Research suggests that optimistic people enjoy concrete, long-term benefits to their health and happiness. Being overoptimistic can be negative.
+Maximizers: A term popularized by psychologist Barry Schwartz of Swarthmore College to refer to people who try to squeeze the greatest amount of benefit and pleasure out of every choice or opportunity. Satisficers, by contrast, feel content with choices as long as they pass a basic threshold of acceptability. Schwartz and colleagues have found that maximizers report low happiness and optimism and higher levels of depression than people who have a greater tendency to satisfice.
+Self-compassion: Kristin Neff, who pioneered the scientific study of self-compassion, generally defines it as quieting one's inner critic and replacing it with a voice of support, understanding, and care for one’s self.
+Flow: Four factors that are essential to flow: 1) performing a task or activity where the degree of challenge is properly balanced with one's ability to complete it; 2) one's goal is clear; 3) there’s constant and immediate feedback about how close one is to achieving that goal; and 4) one is able to devote complete concentration to the task at hand.
+Intrinsic goals: Those that are inherently satisfying to pursue because they are likely to satisfy innate psychological needs for autonomy, relatedness, competence, and growth. Examples of these goals include self-acceptance, forming social connections, and physical fitness.
+Extrinsic goals: Focused on attaining rewards and/or praise from others--they are a means to an end, not inherently rewarding in and of themselves. Examples include financial wealth, fame, or popularity. People often pursue extrinsic goals under the assumption that these goals will bring them happiness, but evidence suggests otherwise. Researchers speculate that intrinsic goals lead to greater happiness because, in the pursuit of these goals, people have positive experiences along the way that support their happiness.
+</ul>
+
 
 
 

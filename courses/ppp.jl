@@ -13,7 +13,7 @@ function skipto(str,char)
 	return 0
 end
 function makelistarray(list)
-	listarray=String[]
+	listarray=AbstractString[]
 	n1=skipto(list,'\n')
 	push!(listarray,list[1:n1])
 	n2=skipto(list[n1+1:end],'\n')+n1
@@ -64,6 +64,18 @@ function process(fname,title)
 		htmltext="<h$hn>$htext</h$hn>\n"
 		text=text[1:hloc[1]-1]*htmltext*text[hstart+lineend-1:end]
 		hloc=search(text,"*")
+	end
+	hloc=search(text,"\n#")
+	while !isempty(collect(hloc))
+		hloc1=hloc[1]+1
+		hn=text[hloc1+1]=='#'?(text[hloc1+2]=='#'?1:2):3
+		hstart=hloc1+4-hn
+		lineend=skipto(text[hstart:end],'\n')
+		htext=text[hstart:hstart+lineend-2]
+		htmltext="<h$(hn+3)>$htext</h$(hn+3)>\n"
+		text=text[1:hloc1-1]*htmltext*text[hstart+lineend-1:end]
+		#print(text[hstart-15:hstart+100])
+		hloc=search(text,"\n#")
 	end
 	ulloc=search(text,"<ul>")
 	while !isempty(collect(ulloc))
