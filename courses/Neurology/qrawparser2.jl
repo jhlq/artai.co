@@ -68,4 +68,4 @@ function parseq(section)
 	close(f)
 	return questions,answers
 end
-s=5;parseq("$(s).1");parseq("$(s).2");parseq("$(s).3");parseq("$(s).4");parseq("$(s).5")
+s=6;parseq("$(s).1");parseq("$(s).2");parseq("$(s).3");parseq("$(s).4");parseq("$(s).5")
