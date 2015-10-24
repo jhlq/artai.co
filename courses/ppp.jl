@@ -57,12 +57,13 @@ function process(fname,title)
 	end
 	hloc=search(text,"*")
 	while !isempty(collect(hloc))
-		hn=text[hloc[1]+1]=='*'?(text[hloc[1]+2]=='*'?1:2):3
-		hstart=hloc[1]+4-hn
+		hloc1=hloc[1]
+		hn=text[hloc1+1]=='*'?(text[hloc1+2]=='*'?1:2):3
+		hstart=hloc1+4-hn
 		lineend=skipto(text[hstart:end],'\n')
 		htext=text[hstart:hstart+lineend-2]
 		htmltext="<h$hn>$htext</h$hn>\n"
-		text=text[1:hloc[1]-1]*htmltext*text[hstart+lineend-1:end]
+		text=text[1:hloc1-1]*htmltext*text[hstart+lineend-1:end]
 		hloc=search(text,"*")
 	end
 	hloc=search(text,"\n#")
@@ -76,6 +77,15 @@ function process(fname,title)
 		text=text[1:hloc1-1]*htmltext*text[hstart+lineend-1:end]
 		#print(text[hstart-15:hstart+100])
 		hloc=search(text,"\n#")
+	end
+	imgloc=search(text,"\nimg: ")
+	while !isempty(collect(imgloc))
+		lineend=skipto(text[imgloc[end]:end],'\n')
+		htmltext="""<img src="$(text[imgloc[end]+1:imgloc[end]+lineend-2])" alt="$(text[imgloc[end]+1:imgloc[end]+lineend-2])">"""
+#		println(htmltext)
+		text=text[1:imgloc[1]]*"\n"*htmltext*"\n"*"\n"*text[imgloc[end]+lineend-1:end]
+		imgloc=search(text,"\nimg:")
+		break
 	end
 	ulloc=search(text,"<ul>")
 	while !isempty(collect(ulloc))
@@ -129,7 +139,6 @@ function process(fname,title)
 	nav=readall("nav.txt")
 	dir=readall("title.txt")
 	doc="""<!DOCTYPE html>
-	<html>
 	<html lang="en">
 	<head>
 	  <meta charset="utf-8">

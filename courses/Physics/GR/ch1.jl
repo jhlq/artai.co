@@ -13,7 +13,20 @@ eq12=@equ x´=Λ*x
 eq13=@equ Transpose(Δx)*η*Δx=Transpose(Δx)*Transpose(Λ)*η*Λ*Δx
 eq14=@equ η=Transpose(Λ)*η*Λ
 eq15=@equ Tensor(η,0,[ρ,σ],2)=Tensor(Λ,μ´,ρ,2)*Tensor(Λ,ν´,σ,2)*Tensor(η,0,[μ´,ν´],2)
-eq16=@equ Tensor(eye(3))=Transpose(R)*Tensor(eye(3))*R
+eq16=@equ Mat(eye(3))=Transpose(Mat(R))*Mat(eye(3))*Mat(R)
 eq17=@equ Tensor(Λ,μ´,ν,2)=Tensor([1 0 0 0;0 cos(θ) sin(θ) 0;0 -sin(θ) cos(θ) 0;0 0 0 1])
 eq18=@equ Tensor(Λ,μ´,ν,2)=Tensor([cosh(ϕ) -sinh(ϕ) 0 0;-sinh(ϕ) cosh(ϕ) 0 0;0 0 1 0;0 0 0 1])
+eq19=@equs(t´=t*cosh(ϕ)-x*sinh(ϕ), x´=-t*sinh(ϕ)+x*cosh(ϕ))
+eq20=EquationChain([:v,:x/:t,sinh(:ϕ)/cosh(:ϕ),tanh(:ϕ)])
+eq21=@equs(t´=γ*(t-v*x), x´=γ*(x-v*t))
+gamma=@equ γ=1/Sqrt(1-v^2)
+eq22=@equ (a+b)*Vec(V+W)=(a+b)*Vec(V)+(a+b)*Vec(W)
+eq23=@equ A=Tensor(A,μ,0,1)*Tensor(ê,0,μ,2)
+eq24=@equ Tensor(V,μ,0,1)=Der(Tensor(x,μ,0,1),λ)
+eq25=@equ Tensor(V,μ´,0,1)=Tensor(Λ,μ´,ν,2)*Tensor(V,ν,0,1)
+eq26=EquationChain(:V, Tensor(:V,:ν´,0,1)*Tensor(:ê,0,:ν´,2), Tensor(:Λ,:ν´,:μ,2)*Tensor(:V,:μ,0,1)*Tensor(:ê,0,:ν´,2))
+eq27=@equ Tensor(ê,0,μ,2)=Tensor(Λ,ν´,μ,2)*Tensor(ê,0,ν´,2)
+eq28=@equ Tensor(1/Λ,ν´,μ,2)=Tensor(Λ,μ,ν´,2)
+eq29=@equs(Tensor(Λ,μ,ν´,2)*Tensor(Λ,σ´,μ,2)=Delta(σ´,ν´), Tensor(Λ,μ,ν´,2)*Tensor(Λ,ν´,ρ,2)=Delta(μ,ρ))
+eq30=@equ Tensor(ê,0,ν´,2))=Tensor(Λ,μ,ν´,2)*Tensor(ê,0,μ,2)
 
