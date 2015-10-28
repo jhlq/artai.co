@@ -7,7 +7,7 @@ What would be the reversal potentials of potassium (K+), sodium (Na+) and chlori
 <ul>
 K+ -88.5 mV; Na+ +70.1 mV; and Cl- -90.7 mV
 K+: -100.6 mV; Na+: -54.1 mV; and Cl-: 32.5 mV
-K+: -90.8 mV; Na+: +72.3 mV; and Cl-: -72.3 mV K+: -90.8 mV; Na+: +72.3 mV; and Cl-: -72.3 mV - correct
+K+: -90.8 mV; Na+: +72.3 mV; and Cl-: -72.3 mV
 K+: +100.6 mV; Na+: +63.8 mV; and Cl-: -67.4 mV
 </ul>
 
