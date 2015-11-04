@@ -89,6 +89,7 @@ function process(fname,title)
 	end
 	ulloc=search(text,"<ul>")
 	while !isempty(collect(ulloc))
+		#println(text[ulloc[1]:ulloc[end]+3])
 		tulloc=search(text[ulloc[end]:end],"</ul>")+ulloc[end]-1
 		list=text[ulloc[end]+2:tulloc[1]-2]
 		listarray=makelistarray(list*"\n ")
