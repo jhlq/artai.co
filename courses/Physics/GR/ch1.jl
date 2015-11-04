@@ -30,3 +30,14 @@ eq28=@equ Tensor(1/Λ,ν´,μ,2)=Tensor(Λ,μ,ν´,2)
 eq29=@equs(Tensor(Λ,μ,ν´,2)*Tensor(Λ,σ´,μ,2)=Delta(σ´,ν´), Tensor(Λ,μ,ν´,2)*Tensor(Λ,ν´,ρ,2)=Delta(μ,ρ))
 eq30=@equ Tensor(ê,0,ν´,2))=Tensor(Λ,μ,ν´,2)*Tensor(ê,0,μ,2)
 
+eq31=@equ a*ω*V+b*ω*W=Real
+
+eq33=@equ Ten(θ,Up(n))*Ten(ê,m)=Delta(n,m)
+eq34=@equ ω=Ten(ω,m)*Ten(θ,Up(m))
+eq35=@equ Ten(ω,m)*Ten(V,Up(n))*Ten(θ,Up(n))*Ten(ê,m)=Ten(ω,m)*Ten(V,Up(m))
+
+eq37=@equ Ten(ω,m´)=Ten(Λ,[m´,Up(n)])*Ten(ω,n)
+V=[1,2,3];ω=[1 2 3]
+
+eq40=@equ D(phi)=Der(phi,Ten(x,Up(mu)))*Ten(θ,Up(m))
+eq41=@equc(Der(phi,Ten(x,Up(mu´)))=Der(Ten(x,m)=Ten(Λ,[m´,Up(m)])*Der(phi,Ten(x,Up(m)))
