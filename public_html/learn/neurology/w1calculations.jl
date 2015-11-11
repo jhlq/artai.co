@@ -10,8 +10,8 @@ NA=6e23 #1/mol Avogadro constant
 
 R=8.3144621 #J/(mol*K)
 F= 96485.3329 #s A / mol
-z=1
-T=310.15
-cQ=5/150
+z=1 #ionic charge
+T=310.15 #temperature in Kelvin = Celsius + 273.15
+cQ=5/150 #concentration quotient, [outside]/[inside]
 
-Eca=R*T/(z*F)*log(cQ)
+E_rev=R*T/(z*F)*log(cQ) #Nernst equilibrium potential

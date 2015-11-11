@@ -49,6 +49,7 @@ http://artai.co/learn/neurology/1_3_Ion_Channels.pdf 1.3 (8.1 MB)
 http://artai.co/learn/neurology/1_4_MembranePotential.pdf 1.4 (1 MB)
 http://artai.co/learn/neurology/1_5_CableProperties.pdf 1.5 (0.9 MB)
 </ul>
+
 *Videos
 <ul>
 http://artai.co/learn/neurology/1.1-hI3Epqe6CGM.3gp 1.1 (4.4 MB)
