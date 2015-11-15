@@ -1,5 +1,6 @@
-###Summary
-##Week 6: Mindfulness
+
+***Summary
+**Week 6: Mindfulness
 This week looks at mindfulness, a nonjudgmental awareness of the present reality – our thoughts, feelings, sensations, and environment. In a mindful state, we aren’t thinking about the past or future but fully attuned to the now.
 
 Matt Killingsworth: Want to be happier? Stay in the moment. Killingsworth’s data shows that people are less happy when their minds are wandering. This is true even if we’re doing unsatisfying activities like commuting, and even if we’re thinking of neutral or pleasant things.
@@ -190,4 +191,91 @@ Thank people with thankless jobs.
 Focus on quality gratitude (that goes into detail) rather than lots of cursory thanks.
 Let people express and receive gratitude in their own style, from gratitude walls to gifts to little gestures of help.
 Use gratitude to help the team get through a crisis and see the positives.
+</ul>
+
+**Week 9: New Frontiers and Happiness “Fit”
+*The cutting edge: Awe, wonder, and beauty 
+We feel awe when we’re faced with something greater than ourselves that we can’t comprehend with our current knowledge.
+
+One study found that people feeling awe (induced by looking up at huge trees) felt less self-important and less entitled, and acted kinder and more generous.
+
+As for spirituality, studies show that spiritual people are happier and less depressed. Why? The common answer is that spiritual people have strong communities, and it might also be because they have more experiences of awe.
+
+Various studies out of Stanford have shown that awe makes us feel like we have more time on our hands, even more than feelings of happiness do.
+
+Awe decreases cytokine levels which boosts health.
+
+*Laughter, play, and narrative
+We laugh in response to contradictory pieces of information, reinforcing our curiosity and desire to learn. Laughter improves social relations by signaling playfulness and cooperation.
+
+Laughter calms the cardiovascular system, decreases blood pressure, and enhances immune function.
+
+Laughter can bring partners, strangers, and even adversaries closer together.
+
+Rats laugh when playing, anticipating play, or anticipating reward. 
+
+Play correlates with creativity, learning, and solving problems. It also boosts social connectedness and well-being while lowering stress. One investigation into people prone to pathological violence found that they never played when they were young.
+
+Studies have shown that play-oriented early childhood programs improve IQ, and play preschool decreases anxiety and boosts creativity and positive attitudes toward school.
+
+As kids get older, play has different functions:
+<ul>
+Early childhood: Learning colors, shapes, tastes, sounds, and more.
+Elementary school: Learning respect, friendship, cooperation, and competition.
+Adolescence: Exploring identities, staying healthy, and blowing off steam.
+Adulthood: Promoting flow.
+</ul>
+
+To cultivate more play, parents can schedule time for it, give kids more choice of what to do, and actually model it by playing themselves. Schools should put more value on recess and bring play into the classroom with more creative activities and less teaching to the test. And communities can set up more playgrounds.
+
+Narratives are symbolic structures we use to make sense of our lives, and there are two main types:
+<ul>
+Micro-narratives: Telling stories about our daily struggles and stresses.
+Meta-narratives: The broader story of the self and our journey through life. It can include many elements of regular narratives like conflicts, turning points, themes, and major characters. Often, the narrative centers on ideas like suffering, compassion, forgiveness, or empathy.
+</ul>
+Studies show that people who tell more vivid and engaging narratives have higher well-being later in life. Having more “possible selves” – different stories or identities – is correlated with less depression. And as we saw earlier, the Best Possible Self exercise increases health and happiness as we construct a narrative about a bright future.
+
+Stories that hold our attention tend to follow similar patterns, starting with something surprising, increasing tension and difficulties, and ending with a thought-provoking climax.
+
+*Finding your “fit”
+Once we find activities that boost happiness, the next step is to figure out which activities work for which people. Research so far has shown that various factors make a difference:
+<ul>
+Motivation and effort: How driven and committed we are to doing it.
+Efficacy beliefs: Whether we believe we can do it and it will work.
+Baseline affective state: How happy we are to begin with.
+Social support: Whether other people will encourage us to do it.
+Demographics: Age, sex, culture, socio-economic status, and more.
+Characteristics of the activity: How often, how much, and what type of activity it is (e.g., social and interpersonal or reflective and individual).
+</ul>
+
+Happiness practices work better when we are told they are effective.
+
+When we’re choosing happiness practices, we should think about our personality and life circumstances. Extroverts may enjoy more social activities, while incredibly busy people should find practices that don’t take much time.
+
+One preliminary way to measure whether an activity is a good fit is to see how much “self-determined motivation” we have to perform it. Self-determined motivation involves five factors:
+<ul>
+Natural: The best activities feel easy to do.
+Enjoyable: The best activities are fun, interesting, or pleasant.
+Valuable: The best activities are the ones we believe are worth doing.
+Guilt: The best activities aren’t done out of a sense of guilt or shame.
+Situational: The best activities are ones we choose, not ones we feel forced into based on our circumstances or social pressure.
+</ul>
+
+*Synthesis and farewell
+After nine week of “The Science of Happiness,” here are the key lessons that Dacher Keltner and Emiliana Simon-Thomas hope you’ll take away:
+<ul>
+Kindness and compassion are in our biology.
+Negative emotions are part of life, and what matters is how we deal with and recover from them.
+Our attention is limited, and we are happiest when we’re focused on (mindful of) whatever we’re doing.
+Change is hard, but possible.
+</ul>
+
+They also encourage us to reflect on questions like these:
+<ul>
+What information in this course was most engaging? Easiest or hardest to take in?
+Which happiness practices were easier or harder to do, and why?
+How can you improve your happiness beyond this course, by continuing some happiness practices or setting life goals?
+How can you become more social, kind and compassionate, mindful, grateful, or positive?
+How has your life narrative changed after learning all this information?
+How can you spread happiness in your community?
 </ul>
