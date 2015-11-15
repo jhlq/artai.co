@@ -5,4 +5,5 @@
 	<a href="basics.html">Basics.</a>
 	<a href="multimedia.html">Multimedia.</a>
 	<a href="graphics.html">Graphics.</a>
+	<a href="animation.html">Animation.</a>
 	</nav>

@@ -121,4 +121,9 @@ Project 4 (advanced): On the Web, look for JavaScript functions for detecting co
 Project 5 (easy to intermediate): Put into practice what you've learned about the responsive canvas and develop an example of your own. The difficulty may vary depending on the things that are drawn or animated.
 </ul>
 
+**Advanced examples
+Collision detection:
+http://jsbin.com/bemebi/11/edit
 
+Sprite animation:
+http://output.jsbin.com/qumiso/5
