@@ -17,7 +17,9 @@
 	echo $_GET["plays"];?> >
 	<button onclick="playplays()">Play!</button>	
 	<br>
-	<canvas id="HexCanvas" width="700" height="900"></canvas>
+	<button onclick="undo()">Undo.</button>	
+	<br>
+	<canvas id="HexCanvas" width="800" height="900"></canvas>
 	<br>
 	Tiles: <input type="number" id="tiles" value=<?php
 	$v=$_GET["tiles"];
@@ -86,6 +88,9 @@
 		}
 	}
 	function refresh(){
+		var el = document.getElementById('HexCanvas');
+		elClone = el.cloneNode(true);
+		el.parentNode.replaceChild(elClone, el);
 		var canvas = document.getElementById('HexCanvas');
 		var context = canvas.getContext('2d');
 		context.clearRect(0, 0, canvas.width, canvas.height);
@@ -110,6 +115,19 @@
 		}
 	}
 	playsequence(document.getElementById("plays").value);
+	function undo(){
+		plays=document.getElementById("plays").value.split(";");
+		newstr="";
+		for (i = 0; i < plays.length-2; i++) {
+			newstr+=plays[i]+";";
+		}
+		document.getElementById("plays").value=newstr;
+		document.getElementById("player").value-=1;
+		if (document.getElementById("player").value<0){
+			document.getElementById("player").value=document.getElementById("players").value-1;
+		}
+		refresh();
+	}
     </script>
 
 </body>
