@@ -4,7 +4,14 @@
     <script src="hexagon.js"></script>
 </head>
 <body>
-	Player: <input type="number" id="player" value="0">
+	Player: <input type="number" id="player" value=
+<?php
+	$v=$_GET["player"];
+	if ($v==""){
+		echo "0";
+	}else{
+		echo $v;
+	}?>>
 	Players: <input type="number" id="players" value=
 <?php
 	$v=$_GET["players"];
