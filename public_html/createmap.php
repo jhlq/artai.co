@@ -9,7 +9,7 @@
 	$map=$_POST["map"];
 	$plays=$_POST["plays"];
 	$player=$_POST["player"];
-	echo $map;
+	echo "Map name: ".$map."<br>";
 	try
 	{
 		$db = new PDO('sqlite:data/mapstest.sqlite');
@@ -19,6 +19,7 @@
 		$s="INSERT INTO ".$map." (plays,player) VALUES ('".$plays."',".$player.");";
 		$db->exec($s);
 
+		print "Map history:<br>";
 		print "<table border=1>";
 		print "<tr><td>Id</td><td>plays</td><td>player</td></tr>";
 		$result = $db->query('SELECT * FROM '.$map);
@@ -28,15 +29,16 @@
 			print "<td>".$row['player']."</td></tr>";
 		}
 		print "</table>";
-		
-		$result = $db->query('SELECT * FROM '.$map);
+
+
+		$result = $db->query('SELECT * FROM '.$map.' ORDER BY id DESC LIMIT 1;');
 		if(empty($result))
 		{
 			print "This map is empty.";
 		} else {
-			$r=$result->fetch(PDO::FETCH_BOTH, PDO::FETCH_ORI_LAST);
-			print "This map contains the following plays: ";
-			print $r['plays'];
+			$r=$result->fetch();
+			#print "This map contains the following plays: ";
+			#print $r['plays'];
 			print '<br>';
 			#print "This map contains the following plays: ".$result[0]['plays'];
 			#print "The current player is: ".$result[0]['player'];

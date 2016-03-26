@@ -28,14 +28,15 @@ Map: <?php echo $_GET["map"]; ?><br>
 		}
 		print "</table>";
 		
-		$result = $db->query('SELECT * FROM '.$v);
+		#$result = $db->query('SELECT * FROM '.$v);
+		$result = $db->query('SELECT * FROM '.$v.' ORDER BY id DESC LIMIT 1;');
 		if(empty($result))
 		{
 			print "This map is empty.";
 		} else {
 			$r=$result->fetch();
-			print "This map contains the following plays: ";
-			print $r['plays'];
+			#print "This map contains the following plays: ";
+			#print $r['plays'];
 			print '<br>';
 			#print "This map contains the following plays: ".$result[0]['plays'];
 			#print "The current player is: ".$result[0]['player'];
