@@ -11,13 +11,7 @@ Map: <?php echo $_GET["map"]; ?><br>
 	$v=$_GET["map"];
 	try
 	{
-		$db = new PDO('sqlite:data/mapstest.sqlite');
-
-#		$s="CREATE TABLE ".$v." (Id INTEGER PRIMARY KEY, plays TEXT, player INTEGER)";
-#		$db->exec($s);	 
-#		$s="INSERT INTO ".$v." (plays,player) VALUES ('0:7,9;1:5,5;0:9,7;',1);";
-#		$db->exec($s);
-
+		print "<br>Map history:<br>";
 		print "<table border=1>";
 		print "<tr><td>Id</td><td>plays</td><td>player</td></tr>";
 		$result = $db->query('SELECT * FROM '.$v);
