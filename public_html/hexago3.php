@@ -16,7 +16,8 @@
 			if(!empty($result)){
 				$r=$result->fetch();
 				$def["player"]=$r["player"];
-				$def["plays"]=$r["plays"];			
+				$def["plays"]=$r["plays"];
+				$def["players"]=$r["players"];			
 			}
 			$db = NULL;
 		}
@@ -35,7 +36,7 @@
 <?php
 	$v=$_GET["players"];
 	if ($v==""){
-		echo "2";
+		echo $def["players"];
 	}else{
 		echo $v;
 	}?>>
@@ -49,7 +50,12 @@
 	}?> >
 	<button onclick="playplays()">Play!</button>	
 	<br>
-	<button onclick="undo()">Undo.</button>	
+	<button onclick="undo()">Undo.</button>
+<?php
+	if($map!=""){
+		echo '<button onclick="updatemap(\''.$map.'\')">Update map</button>';
+	}
+?>
 	<br>
 	<canvas id="HexCanvas" width="800" height="900"></canvas>
 	<br>
@@ -159,6 +165,12 @@
 			document.getElementById("player").value=document.getElementById("players").value-1;
 		}
 		refresh();
+	}
+	function updatemap(map){
+		plays=document.getElementById("plays").value;
+		player=document.getElementById("player").value;
+		players=document.getElementById("players").value;
+		window.location = "http://artai.co/updatemap.php?map="+map+"&plays="+plays+"&player="+player+"&players="+players;
 	}
     </script>
 

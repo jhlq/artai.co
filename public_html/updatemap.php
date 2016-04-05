@@ -6,11 +6,11 @@
 <body>
 
 <?php
-	$map=$_POST["map"];
-	$plays=$_POST["plays"];
-	$player=$_POST["player"];
-	$players=$_POST["players"];
-	echo "Map name: ".$map."<br>";
+	$map=$_GET["map"];
+	$plays=$_GET["plays"];
+	$player=$_GET["player"];
+	$players=$_GET["players"];
+	echo "Updated map: ".$map."<br>";
 	try
 	{
 		$db = new PDO('sqlite:data/mapstest.sqlite');
@@ -46,6 +46,8 @@
 			#print "The current player is: ".$result[0]['player'];
 			$link='http://artai.co/hexago.php?plays='.$r['plays'].'&player='.$r['player'].'&players='.$r['players'];
 			print 'To view this map go to the following link: <a href="'.$link.'">'.$link.'</a> ';
+			$link2='http://artai.co/hexago3.php?map='.$map;
+			print '<br>Or this one: <a href="'.$link2.'">'.$link2.'</a>';
 		}
 
 
