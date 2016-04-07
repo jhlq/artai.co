@@ -10,7 +10,9 @@
 	$plays=$_GET["plays"];
 	$player=$_GET["player"];
 	$players=$_GET["players"];
-	echo "Updated map: ".$map."<br>";
+	echo "Map name: ".$map."<br>";
+	$link2='http://artai.co/hexago3.php?map='.$map;
+	echo 'Map link: <a href="'.$link2.'">'.$link2.'</a><br>';
 	try
 	{
 		$db = new PDO('sqlite:data/mapstest.sqlite');
@@ -19,6 +21,8 @@
 		$db->exec($s);	 
 		$s="INSERT INTO ".$map." (plays,player,players) VALUES ('".$plays."',".$player.",".$players.");";
 		$db->exec($s);
+
+		print "<br>Successfully updated map!<br><br>";
 
 		print "Map history:<br>";
 		print "<table border=1>";
@@ -44,7 +48,7 @@
 			print '<br>';
 			#print "This map contains the following plays: ".$result[0]['plays'];
 			#print "The current player is: ".$result[0]['player'];
-			$link='http://artai.co/hexago.php?plays='.$r['plays'].'&player='.$r['player'].'&players='.$r['players'];
+			$link='http://artai.co/hexago.php?plays='.$r['plays'].'&players='.$r['players'].'&player='.$r['player'];
 			print 'To view this map go to the following link: <a href="'.$link.'">'.$link.'</a> ';
 			$link2='http://artai.co/hexago3.php?map='.$map;
 			print '<br>Or this one: <a href="'.$link2.'">'.$link2.'</a>';

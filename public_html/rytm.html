@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ARTai</title>
+</head>
+
+<body>
+	<h1>Rytm!</h1>
+
+Left arrow: <input type="range" id="range1" value="100"> <input type="checkbox" id="c1"> BPM: <input type="number" id="bpm1" value="60">
+<br>
+<button onclick="move()">Start a 60 seconds session!</button>
+<p id="output"></p>
+Score: <p id="score">0</p>
+
+
+<script>
+function fun(){
+	var x = document.getElementById("range1").value;
+	document.getElementById("output").innerHTML = x;
+	document.getElementById("range1").value=50;
+}
+document.onkeydown=function(evt){
+	evt=evt||window.event;
+	if (evt.keyCode==37){ //left arrow
+		//alert('Pressed button '+evt.keyCode);
+		var c1 = document.getElementById("c1");
+		if (!c1.checked){
+			s=parseInt(document.getElementById("score").innerHTML);
+			s=s+parseInt(document.getElementById("range1").value);
+			document.getElementById("score").innerHTML = s;
+			c1.checked=true;
+		}
+	}
+}
+function move() {
+	var d = new Date();
+	var t = d.getTime();
+	var now=d.getTime();
+	var dt = now-t;
+	var id = setInterval(frame, 100);
+	var hz1 = document.getElementById("bpm1").value/60;
+	function frame() {
+		if (dt >= 60*1000) {
+			clearInterval(id);
+		} else {
+			var d = new Date();
+			dt=d.getTime()-t;
+			val=Math.round(150*Math.abs(Math.cos(hz1*dt/1000*3.14)))-50;
+			document.getElementById("range1").value=val;
+			document.getElementById("output").innerHTML = val;
+			var c1 = document.getElementById("c1");
+			if (val<0 && c1.checked){
+				c1.checked=false;
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>
