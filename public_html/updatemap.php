@@ -6,16 +6,16 @@
 <body>
 
 <?php
-	$map=$_GET["map"];
-	$plays=$_GET["plays"];
-	$player=$_GET["player"];
-	$players=$_GET["players"];
-	$borderlength=$_GET["borderlength"];
-	$tiles=$_GET["tiles"];
-	$tilesize=$_GET["tilesize"];
-	$colors=$_GET["colors"];
-	$borderstart=$_GET["borderstart"];
-	$bordercolor=$_GET["bordercolor"];
+	$map=preg_replace('/[^0-9A-z_-]+/',"$1",$_GET["map"]);
+	$plays=preg_replace('/[^0-9:,;]+/',"$1",$_GET["plays"]);
+	$player=preg_replace('/[^0-9]+/',"$1",$_GET["player"]);
+	$players=preg_replace('/[^0-9]+/',"$1",$_GET["players"]);
+	$borderlength=preg_replace('/[^0-9]+/',"$1",$_GET["borderlength"]);
+	$tiles=preg_replace('/[^0-9]+/',"$1",$_GET["tiles"]);
+	$tilesize=preg_replace('/[^0-9]+/',"$1",$_GET["tilesize"]);
+	$colors=preg_replace('/[^0-9:,;]+/',"$1",$_GET["colors"]);
+	$borderstart=preg_replace('/[^0-9]+/',"$1",$_GET["borderstart"]);
+	$bordercolor=preg_replace('/[^0-9:,;]+/',"$1",$_GET["bordercolor"]);
 	echo "Map name: ".$map."<br>";
 	$link2='http://artai.co/hexago3.php?map='.$map;
 	echo 'Map link: <a href="'.$link2.'">'.$link2.'</a><br>';
@@ -28,8 +28,6 @@
 		$s="INSERT INTO ".$map." (plays,player,players,borderlength,tiles,tilesize,colors,borderstart,bordercolor) VALUES ('".$plays."',".$player.",".$players.",".$borderlength.",".$tiles.",".$tilesize.",'".$colors."',".$borderstart.",'".$bordercolor."');";
 		$db->exec($s);
 		print $s;
-
-		print "<br>Successfully updated map!<br><br>";
 
 		print "Map history:<br>";
 		print "<table border=1>";

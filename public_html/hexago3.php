@@ -18,9 +18,9 @@
 				$def["player"]=$r["player"];
 				$def["plays"]=$r["plays"];
 				$def["players"]=$r["players"];
-				$def["borderlength"]=$r["borderlength"]|"10";	
+				#$def["borderlength"]=$r["borderlength"]|"10";	
 
-				$keys = array("tiles", "tilesize", "colors", "borderstart", "bordercolor");
+				$keys = array("borderlength", "tiles", "tilesize", "colors", "borderstart", "bordercolor");
 				foreach ($keys as $key) {
 					if($r[$key]!="" and $r[$key]!=-1){
 						$def[$key]=$r[$key];
