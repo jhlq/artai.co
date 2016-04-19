@@ -27,17 +27,18 @@
 		$db->exec($s);	 
 		$s="INSERT INTO ".$map." (plays,player,players,borderlength,tiles,tilesize,colors,borderstart,bordercolor) VALUES ('".$plays."',".$player.",".$players.",".$borderlength.",".$tiles.",".$tilesize.",'".$colors."',".$borderstart.",'".$bordercolor."');";
 		$db->exec($s);
-		print $s;
+		#print $s;
 
-		print "Map history:<br>";
+		print "<br>Map history:<br>";
 		print "<table border=1>";
-		print "<tr><td>Id</td><td>plays</td><td>player</td><td>borderlength</td><td>players</td></tr>";
+		print "<tr><td>Id</td><td>plays</td><td>player</td><td>borderlength</td><td>borderstart</td><td>players</td></tr>";
 		$result = $db->query('SELECT * FROM '.$map);
 		foreach($result as $row){
 			print "<tr><td>".$row['Id']."</td>";
 			print "<td>".$row['plays']."</td>";
 			print "<td>".$row['player']."</td>";
 			print "<td>".$row['borderlength']."</td>";
+			print "<td>".$row['borderstart']."</td>";
 			print "<td>".$row['players']."</td></tr>";
 		}
 		print "</table>";
@@ -55,9 +56,9 @@
 			#print "This map contains the following plays: ".$result[0]['plays'];
 			#print "The current player is: ".$result[0]['player'];
 			$link='http://artai.co/hexago.php?plays='.$r['plays'].'&players='.$r['players'].'&player='.$r['player'];
-			print 'To view this map go to the following link: <a href="'.$link.'">'.$link.'</a> ';
+			#print 'To view this map go to the following link: <a href="'.$link.'">'.$link.'</a> ';
 			$link2='http://artai.co/hexago3.php?map='.$map;
-			print '<br>Or this one: <a href="'.$link2.'">'.$link2.'</a>';
+			#print '<br>Or this one: <a href="'.$link2.'">'.$link2.'</a>';
 		}
 
 
