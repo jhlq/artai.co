@@ -10,6 +10,12 @@
 	$plays=$_GET["plays"];
 	$player=$_GET["player"];
 	$players=$_GET["players"];
+	$borderlength=$_GET["borderlength"];
+	$tiles=$_GET["tiles"];
+	$tilesize=$_GET["tilesize"];
+	$colors=$_GET["colors"];
+	$borderstart=$_GET["borderstart"];
+	$bordercolor=$_GET["bordercolor"];
 	echo "Map name: ".$map."<br>";
 	$link2='http://artai.co/hexago3.php?map='.$map;
 	echo 'Map link: <a href="'.$link2.'">'.$link2.'</a><br>';
@@ -17,21 +23,23 @@
 	{
 		$db = new PDO('sqlite:data/mapstest.sqlite');
 
-		$s="CREATE TABLE ".$map." (Id INTEGER PRIMARY KEY, plays TEXT, player INTEGER, players INTEGER)";
+		$s="CREATE TABLE ".$map." (Id INTEGER PRIMARY KEY, plays TEXT, player INTEGER, players INTEGER, borderlength INTEGER, tiles INTEGER, tilesize INTEGER, colors TEXT, borderstart INTEGER, bordercolor TEXT)";
 		$db->exec($s);	 
-		$s="INSERT INTO ".$map." (plays,player,players) VALUES ('".$plays."',".$player.",".$players.");";
+		$s="INSERT INTO ".$map." (plays,player,players,borderlength,tiles,tilesize,colors,borderstart,bordercolor) VALUES ('".$plays."',".$player.",".$players.",".$borderlength.",".$tiles.",".$tilesize.",'".$colors."',".$borderstart.",'".$bordercolor."');";
 		$db->exec($s);
+		print $s;
 
 		print "<br>Successfully updated map!<br><br>";
 
 		print "Map history:<br>";
 		print "<table border=1>";
-		print "<tr><td>Id</td><td>plays</td><td>player</td></tr>";
+		print "<tr><td>Id</td><td>plays</td><td>player</td><td>borderlength</td><td>players</td></tr>";
 		$result = $db->query('SELECT * FROM '.$map);
 		foreach($result as $row){
 			print "<tr><td>".$row['Id']."</td>";
 			print "<td>".$row['plays']."</td>";
 			print "<td>".$row['player']."</td>";
+			print "<td>".$row['borderlength']."</td>";
 			print "<td>".$row['players']."</td></tr>";
 		}
 		print "</table>";

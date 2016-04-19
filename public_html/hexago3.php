@@ -6,7 +6,7 @@
 <body>
 	Player: <input type="number" id="player" value=
 <?php
-	$def=array("player"=>"0","players"=>"2","plays"=>"","tiles"=>"19");
+	$def=array("player"=>"0", "players"=>"2", "plays"=>"", "tiles"=>"19", "tilesize"=>"21", "colors"=>"255,0,0;0,255,0;0,0,255;0,0,0;150,0,150;255,255,0;", "borderstart"=>"5", "borderlength"=>"10", "bordercolor"=>"51,0,100");
 	$map=$_GET["map"];
 	if($map!=""){
 		try{
@@ -17,7 +17,15 @@
 				$r=$result->fetch();
 				$def["player"]=$r["player"];
 				$def["plays"]=$r["plays"];
-				$def["players"]=$r["players"];			
+				$def["players"]=$r["players"];
+				$def["borderlength"]=$r["borderlength"]|"10";	
+
+				$keys = array("tiles", "tilesize", "colors", "borderstart", "bordercolor");
+				foreach ($keys as $key) {
+					if($r[$key]!="" and $r[$key]!=-1){
+						$def[$key]=$r[$key];
+					}
+				}		
 			}
 			$db = NULL;
 		}
@@ -53,7 +61,7 @@
 	<button onclick="undo()">Undo.</button>
 <?php
 	if($map!=""){
-		echo '<button onclick="updatemap(\''.$map.'\')">Update map</button>';
+		echo '<button onclick="updatemap(\''.$map.'\')">Save map</button>';
 	}
 ?>
 	<br>
@@ -62,21 +70,21 @@
 	Tiles: <input type="number" id="tiles" value=<?php
 	$v=$_GET["tiles"];
 	if ($v==""){
-		echo "19";
+		echo $def["tiles"];
 	}else{
 		echo $v;
 	}?>>
 	Tilesize: <input type="number" id="tilesize" value=<?php
 	$v=$_GET["tilesize"];
 	if ($v==""){
-		echo "21";
+		echo $def["tilesize"];
 	}else{
 		echo $v;
 	}?>>
-	Colors: <input type="string" id="colors" value=<?php
+	Colors: <input type="string" id="colors" pattern="[0-9:,;]+" value=<?php
 	$v=$_GET["colors"];
 	if ($v==""){
-		echo "255,0,0;0,255,0;0,0,255;0,0,0;150,0,150;255,255,0;";
+		echo $def["colors"];
 	}else{
 		echo $v;
 	}?>>
@@ -85,21 +93,21 @@
 	Start: <input type="number" id="borderstart" value=<?php
 	$v=$_GET["borderstart"];
 	if ($v==""){
-		echo "5";
+		echo $def["borderstart"];
 	}else{
 		echo $v;
 	}?>>
 	Length: <input type="number" id="borderlength" value=<?php
 	$v=$_GET["borderlength"];
 	if ($v==""){
-		echo "10";
+		echo $def["borderlength"];
 	}else{
 		echo $v;
 	}?>>
-	Color: <input type="string" id="bordercolor" value=<?php
+	Color: <input type="string" id="bordercolor" pattern="[0-9:,;]+" value=<?php
 	$v=$_GET["bordercolor"];
 	if ($v==""){
-		echo "51,0,100";
+		echo $def["bordercolor"];
 	}else{
 		echo $v;
 	}?>>
@@ -170,7 +178,13 @@
 		plays=document.getElementById("plays").value;
 		player=document.getElementById("player").value;
 		players=document.getElementById("players").value;
-		window.location = "http://artai.co/updatemap.php?map="+map+"&plays="+plays+"&player="+player+"&players="+players;
+		bl=document.getElementById("borderlength").value;
+		tiles=document.getElementById("tiles").value;
+		tilesize=document.getElementById("tilesize").value;
+		colors=document.getElementById("colors").value;
+		borderstart=document.getElementById("borderstart").value;
+		bordercolor=document.getElementById("bordercolor").value;
+		window.location = "http://artai.co/updatemap.php?map="+map+"&plays="+plays+"&player="+player+"&players="+players+"&borderlength="+bl+"&tiles="+tiles+"&tilesize="+tilesize+"&colors="+colors+"&borderstart="+borderstart+"&bordercolor="+bordercolor;
 	}
     </script>
 

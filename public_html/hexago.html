@@ -10,12 +10,19 @@
 	Plays: <input type="string" id="plays" value="">
 	<button onclick="playplays()">Play!</button>	
 	<br>
+	<button onclick="undo()">Undo.</button>
+	<br>
 	<canvas id="HexCanvas" width="900" height="900"></canvas>
 	<br>
 	Tiles: <input type="number" id="tiles" value="19">
 	Tilesize: <input type="number" id="tilesize" value="21">
 	Colors: <input type="string" id="colors" value="255,0,0;0,255,0;0,0,255;0,0,0;0,150,150;150,150,0;">
 	<br>
+	Border.<br>
+	Start: <input type="number" id="borderstart" value="5">
+	Length: <input type="number" id="borderlength" value="10">
+	Color: <input type="string" id="bordercolor" value="51,0,100">
+	<br><br>
 	<button onclick="refresh()">Refresh</button>	
 	
     <script>
@@ -30,14 +37,39 @@
 		var q=p[1].split(",");
 		hexagonGrid.drawHexAtColRow(q[0],q[1],"rgba(70,50,90,0.7)");
 	}
+	function drawborder(start,length,color){
+		for (i=0;i<length;i++){
+			hexagonGrid.drawHexAtColRow(0,start+i,"rgba("+color+",0.9)");
+			hexagonGrid.drawHexAtColRow(length*2-2,start+i,"rgba("+color+",0.9)");
+		}
+		for (i=1;i<length;i++){
+			hexagonGrid.drawHexAtColRow(i,start-1-parseInt(i/2-0.5),"rgba("+color+",0.9)");
+			hexagonGrid.drawHexAtColRow(length-1+i,start-length/2+parseInt(i/2+0.5),"rgba("+color+",0.9)");
+			hexagonGrid.drawHexAtColRow(length+i-1,start-length/2+2*length-2-parseInt(i/2),"rgba("+color+",0.9)");
+			hexagonGrid.drawHexAtColRow(i,start+length+parseInt(i/2)-1,"rgba("+color+",0.9)");
+		}
+	}
 	function refresh(){
-		var canvas = document.getElementById('HexCanvas');
+	/*	var canvas = document.getElementById('HexCanvas');
 		var context = canvas.getContext('2d');
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		var nt = document.getElementById("tiles").value;
 		var ts = document.getElementById("tilesize").value;
 		var hexagonGrid = new HexagonGrid("HexCanvas", ts);
 		hexagonGrid.drawHexGrid(nt, nt, 5, 5, true);
+	*/
+		var el = document.getElementById('HexCanvas');
+		elClone = el.cloneNode(true);
+		el.parentNode.replaceChild(elClone, el);
+		var canvas = document.getElementById('HexCanvas');
+		var context = canvas.getContext('2d');
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		var nt = document.getElementById("tiles").value;
+		var ts = document.getElementById("tilesize").value;
+		hexagonGrid = new HexagonGrid("HexCanvas", ts);
+		hexagonGrid.drawHexGrid(nt, nt, 5, 5, true);
+		drawborder(parseInt(document.getElementById("borderstart").value),parseInt(document.getElementById("borderlength").value),document.getElementById("bordercolor").value);
+		playplays();
 	}
 	function playplays(){
 		var plays=(document.getElementById("plays").value);
@@ -46,12 +78,25 @@
 	function playsequence(seq){
 		plays=seq.split(";");
 		var c=(document.getElementById("colors").value).split(";");
-		for (i = 0; i < plays.length; i++) {
+		for (i = 0; i < plays.length-1; i++) {
 			var p=plays[i].split(":");
 			var player=p[0];
 			var q=p[1].split(",");
 			hexagonGrid.drawHexAtColRow(q[0],q[1],"rgba("+c[player]+",0.3)");
 		}
+	}
+	function undo(){
+		plays=document.getElementById("plays").value.split(";");
+		newstr="";
+		for (i = 0; i < plays.length-2; i++) {
+			newstr+=plays[i]+";";
+		}
+		document.getElementById("plays").value=newstr;
+		document.getElementById("player").value-=1;
+		if (document.getElementById("player").value<0){
+			document.getElementById("player").value=document.getElementById("players").value-1;
+		}
+		refresh();
 	}
     </script>
 
