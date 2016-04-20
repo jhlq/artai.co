@@ -4,16 +4,25 @@
 	<title>ARTai</title>
 <script src="thunder.js"></script>
 <script>
-    Th.init();
+	Th.init();
 
-    var ThDemo={
-        sineFunc:function(si, len,  frq, chn, opt) {
-            var fad=Math.min(1,(opt.sustain || 1)*(len-si)/len); // used to fade out, to avoid an abrupt chop off of the wave, which causes a click.
-            return Math.floor(fad*128*256*(
-                Math.sin(2.0 * Math.PI * frq * si  / 44100)
-                ));            
-            }
-        };
+	var ThDemo={
+		sineFunc:function(si, len,  frq, chn, opt) {
+			var fad=Math.min(1,(opt.sustain || 1)*(len-si)/len); // used to fade out, to avoid an abrupt chop off of the wave, which causes a click.
+			return Math.floor(fad*128*256*(
+				Math.sin(2.0 * Math.PI * frq * si  / 44100)
+				));			
+		}
+	};
+	ThDemo.soundComplex=function() {
+		var fn1=function(si, len,  frq, chn, opt) {
+			var fad=(len-si)/len; 
+			return Math.floor(fad*128*256*(
+				Math.sin(2.0 * Math.PI * opt.detune*frq * si  / 44100)
+				));		
+			};				 
+		Th.Sound.create("SoundComplex",fn1,{detune:1.009}).play();
+	}
 </script>
 </head>
 
@@ -27,11 +36,14 @@ Down arrow: <br>BPM: <input type="number" id="bpm2" value="50"> <input type="ran
 Right arrow: <br>BPM: <input type="number" id="bpm3" value="40"> <input type="range" id="range3" value="100" style="background:#ff00ff;"> <input type="checkbox" id="c3"> 
 <br>
 <button onclick="move()">Start a 60 seconds session!</button><br>
-<button onclick="rytm()">Play the correct rytm for 60 seconds!</button><br><br>
+<button onclick="rytm()">Play the correct rytm for 60 seconds!</button><br>
+<button onclick="stop()">Stop either/both!</button><br><br>
 Score: <p id="score">0</p>
-Max: <div id="max"></p>
+Max: <p id="max"></p>
 
 
+<input type="hidden" id="id1" value="" >
+<input type="hidden" id="id2" value="" >
 <script>
 document.onkeydown=function(evt){
 	evt=evt||window.event;
@@ -75,7 +87,8 @@ function move() {
 	var t = d.getTime();
 	var now=d.getTime();
 	var dt = now-t;
-	var id = setInterval(frame, 100);
+	var id = setInterval(frame, 10);
+	document.getElementById("id1").value=id;
 	function frame() {
 		if (dt >= 60*1000) {
 			clearInterval(id);
@@ -107,12 +120,13 @@ function rytm(){
 	var hz1 = document.getElementById("bpm1").value/60;
 	var hz2 = document.getElementById("bpm2").value/60;
 	var hz3 = document.getElementById("bpm3").value/60;
-	Th.Sound.create("SoundSine",ThDemo.sineFunc).play();
+	//Th.Sound.create("SoundSine",ThDemo.sineFunc).play();
 	var d = new Date();
 	var t = d.getTime();
 	var now=d.getTime();
 	var dt = now-t;
-	var id = setInterval(frame2, 30);
+	var id = setInterval(frame2, 10);
+	document.getElementById("id2").value=id;
 	function frame2() {
 		if (dt >= 60*1000) {
 			clearInterval(id);
@@ -124,27 +138,33 @@ function rytm(){
 			val3=Math.abs(Math.cos(hz3*dt/1000*3.14));
 			var c1 = document.getElementById("c1");
 			if (val1>0.99 && !c1.checked){
-				Th.Sound.create("SoundSine",ThDemo.sineFunc).play();
+				Th.Inst.create("soundComplex",ThDemo.sineFunc).getSound("A").play();
 				c1.checked=true;
 			} else if (val1<0.3 && c1.checked){
 				c1.checked=false;
 			}
 			var c2 = document.getElementById("c2");
 			if (val2>0.99 && !c2.checked){
-				Th.Sound.create("SoundSine",ThDemo.sineFunc).play();
+				Th.Inst.create("soundComplex",ThDemo.sineFunc).getSound("C").play();
 				c2.checked=true;
 			} else if (val2<0.3 && c2.checked){
 				c2.checked=false;
 			}
 			var c3 = document.getElementById("c3");
 			if (val3>0.99 && !c3.checked){
-				Th.Sound.create("SoundSine",ThDemo.sineFunc).play();
+				Th.Inst.create("soundComplex",ThDemo.sineFunc).getSound("E").play();
 				c3.checked=true;
 			} else if (val3<0.3 && c3.checked){
 				c3.checked=false;
 			}
 		}
 	}
+}
+function stop(){
+	clearInterval(document.getElementById('id1').value);
+	clearInterval(document.getElementById('id2').value);
+//	ThDemo.soundComplex();
+//	Th.Inst.create("soundComplex",ThDemo.sineFunc).getSound("A").play();
 }
 </script>
 </body>
