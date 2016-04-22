@@ -38,17 +38,23 @@ function coordify(hca)
 	return xs,ys
 end
 
-function place(x,y,p=1)
+function place(x::Integer,y::Integer,p=1)
 	s=p==1?"*":p==2?"+":"x"
 	h=HC(x,y,-x-y)
 	loc=center(h)
 	scatter([loc[1]],[loc[2]],s)
 end
-function place(hca::Array,pa::Array)
+function place(hca::Array{HC},pa::Array)
 	for i in 1:length(hca)-1
 		place(hca[i].x,hca[i].y,pa[i])
 	end
 	place(hca[end].x,hca[end].y,pa[end])
+end
+function place(cora::Array{Tuple{Int64,Int64},1},pa::Array)
+	for i in 1:length(cora)-1
+		place(cora[i][1],cora[i][2],pa[i])
+	end
+	place(cora[end][1],cora[end][2],pa[end])
 end
 function oddtocubic(plays)
 	plarr=split(plays,';')[1:end-1]
@@ -105,9 +111,7 @@ end
 #=
 xs,ys=coordify(field)
 scatter(xs,ys)
-using Winston
-scatter(coordify(field)...)
-hold()
+using Winston;scatter(coordify(field)...);hold()
 
 plays="0:10,10;1:11,9;0:12,9;"
 plarr=split(plays,';')[1:end-1]
@@ -120,5 +124,10 @@ y1=parse(Int,loc[2])
 plays="0:9,9;1:8,9;0:8,8;"
 hca,pa=oddtocubic(plays)
 place(hca,pa)
+
+line=[(2,-1),(1,-1),(0,-1),(-1,-1)]
+for l in line
+	push!(map[l].has,1)
+end
 
 =#
