@@ -58,12 +58,17 @@
 	}?> >
 	<button onclick="playplays()">Play!</button>	
 	<br>
-	<button onclick="undo()">Undo.</button>
+	Map name: <input type="string" id="map" value=
 <?php
-	if($map!=""){
-		echo '<button onclick="updatemap(\''.$map.'\')">Save map</button>';
-	}
-?>
+	$v=$_GET["map"];
+	if ($v==""){
+		echo "";#$def["map"];
+	}else{
+		echo $v;
+	}?> >
+	<button onclick="updatemap()">Save map</button>
+	<br>
+	<button onclick="undo()" style="width:90px;height:90px;">Undo.</button>
 	<br>
 	<canvas id="HexCanvas" width="800" height="900"></canvas>
 	<br>
@@ -174,17 +179,20 @@
 		}
 		refresh();
 	}
-	function updatemap(map){
-		plays=document.getElementById("plays").value;
-		player=document.getElementById("player").value;
-		players=document.getElementById("players").value;
-		bl=document.getElementById("borderlength").value;
-		tiles=document.getElementById("tiles").value;
-		tilesize=document.getElementById("tilesize").value;
-		colors=document.getElementById("colors").value;
-		borderstart=document.getElementById("borderstart").value;
-		bordercolor=document.getElementById("bordercolor").value;
-		window.location = "http://artai.co/updatemap.php?map="+map+"&plays="+plays+"&player="+player+"&players="+players+"&borderlength="+bl+"&tiles="+tiles+"&tilesize="+tilesize+"&colors="+colors+"&borderstart="+borderstart+"&bordercolor="+bordercolor;
+	function updatemap(){
+		map=document.getElementById("map").value;
+		if (map!=""){
+			plays=document.getElementById("plays").value;
+			player=document.getElementById("player").value;
+			players=document.getElementById("players").value;
+			bl=document.getElementById("borderlength").value;
+			tiles=document.getElementById("tiles").value;
+			tilesize=document.getElementById("tilesize").value;
+			colors=document.getElementById("colors").value;
+			borderstart=document.getElementById("borderstart").value;
+			bordercolor=document.getElementById("bordercolor").value;
+			window.location = "http://artai.co/updatemap.php?map="+map+"&plays="+plays+"&player="+player+"&players="+players+"&borderlength="+bl+"&tiles="+tiles+"&tilesize="+tilesize+"&colors="+colors+"&borderstart="+borderstart+"&bordercolor="+bordercolor;
+		}
 	}
     </script>
 
