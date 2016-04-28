@@ -37,6 +37,9 @@ server {
 	location /learn/ {
                 try_files $uri /learn/index.html;
         }
+	location /hexago/ {
+                try_files $uri /hexago/index.html;
+        }
 	location /marcus.appelros/music/ {
 		try_files $uri /marcus.appelros/music/index.php;
 	}

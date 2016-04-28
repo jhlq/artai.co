@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Hexago</title>
     <script src="hexagon.js"></script>
@@ -197,3 +198,5 @@
     </script>
 
 </body>
+
+</html>

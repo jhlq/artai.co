@@ -1,0 +1,68 @@
+<h1>Love!</h1>
+<div id="drawing"></div>
+<p>Lovelove.</p>
+
+<style>
+html, body, #drawing {
+    margin: 0;
+    height: 95%;
+    width: 95%;
+}
+</style>
+
+<script src="svg.js"></script>
+
+<script>
+/* create an svg drawing */
+var draw = SVG('drawing')
+
+c=draw.circle(30).center('50%','50%').fill('#909')
+c.click(function(){
+	this.fill('#090')
+})
+drawboard(9,45,30)
+
+
+
+function rotate(x,p){
+	xp=x[0]*Math.cos(p)-x[1]*Math.sin(p)
+	yp=x[0]*Math.sin(p)+x[1]*Math.cos(p)
+	return [xp,yp]
+}
+function callbackclick(){
+	this.fill('#0f0')
+}
+function cbdown(){
+	this.fill('#f00')
+}
+function cbup(){
+	this.fill('#00f')
+}
+function drawborder(sidelength,d,r,origin,color='#909'){
+	R=sidelength-1
+	//d=distance/R
+	v=[d/2,d*Math.sin(Math.PI/3)]
+	for (i = 0; i < sidelength-1; i++) { 
+		for (j = 0; j < 6; j++) { 
+			xp=rotate([R*d-i*v[0],i*v[1]],j*Math.PI/3)
+			c=draw.circle(r).center(origin[0]+xp[0]+'%',origin[1]+xp[1]+'%').fill(color)
+			c.click(callbackclick)
+			c.mousedown(cbdown)
+			c.mouseup(cbup)
+		}
+	}
+}
+function drawboard(sidelength,distance,r,color='#707',origin=[50,50]){
+	R=sidelength-1
+	d=distance/R
+	c=draw.circle(r).center(origin[0]+'%',origin[1]+'%').fill(color)
+	c.click(callbackclick)
+	c.mousedown(cbdown)
+	c.mouseup(cbup)
+	for (k = 2; k <= sidelength; k++) { 
+		console.log(k);
+		drawborder(k,d,r,origin,color)
+	}
+}
+
+</script>
