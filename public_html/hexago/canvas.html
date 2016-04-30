@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ARTai</title>
+	<script src="hexago.js"></script>
+</head>
+
+<body>
+	<input type="string" id="col" value='#f00'>
+	<input type="number" id="x" value=0>
+	<input type="number" id="y" value=0>
+	<button onclick="submit()">Submit!</button>
+	<canvas id="TriCanvas" width="700" height="600"></canvas>
+<script>
+var map = {}
+//map.l=3
+var l=9
+putboard(3,map)
+
+function submit(){
+	var x = document.getElementById("x").value;
+	var y = document.getElementById("y").value;
+	map[[x,y]]=document.getElementById("col").value;
+	console.log(map)
+}
+
+// For canvas
+
+grid = new Grid(map,"TriCanvas", 9);
+//grid.drawLine(0,0,500,600);
+grid.drawGrid();
+
+</script>
+</body>
+</html>

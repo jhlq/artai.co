@@ -1,6 +1,12 @@
-<h1>Love!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hexago</title>
+</head>
+<h1>SVG hexago board!</h1>
+<p>Double click for green. Click outside and pull in for blue, inside and pull out to erase. Try resizing the window!</p>
 <div id="drawing"></div>
-<p>Lovelove.</p>
+<p>Lovelovelove.</p>
 
 <style>
 html, body, #drawing {
@@ -10,19 +16,23 @@ html, body, #drawing {
 }
 </style>
 
-<script src="svg.js"></script>
+<script src="svg.min.js"></script>
 
 <script>
+if (SVG.supported) {
+
 /* create an svg drawing */
 var draw = SVG('drawing')
 
-c=draw.circle(30).center('50%','50%').fill('#909')
-c.click(function(){
-	this.fill('#090')
-})
-drawboard(9,45,30)
+drawboard(9,45,5)
+} else {
+  alert('SVG images not supported in this browser.')
+}
 
-
+//c=draw.circle(30).center('50%','50%').fill('#909')
+//c.click(function(){
+//	this.fill('#090')
+//})
 
 function rotate(x,p){
 	xp=x[0]*Math.cos(p)-x[1]*Math.sin(p)
@@ -30,39 +40,50 @@ function rotate(x,p){
 	return [xp,yp]
 }
 function callbackclick(){
-	this.fill('#0f0')
+	this.fill('#f00')
 }
 function cbdown(){
-	this.fill('#f00')
+	this.fill('#707')
 }
 function cbup(){
 	this.fill('#00f')
 }
+function cbdbc(){
+	this.fill('#0f0')
+}
 function drawborder(sidelength,d,r,origin,color='#909'){
 	R=sidelength-1
-	//d=distance/R
 	v=[d/2,d*Math.sin(Math.PI/3)]
 	for (i = 0; i < sidelength-1; i++) { 
 		for (j = 0; j < 6; j++) { 
 			xp=rotate([R*d-i*v[0],i*v[1]],j*Math.PI/3)
-			c=draw.circle(r).center(origin[0]+xp[0]+'%',origin[1]+xp[1]+'%').fill(color)
+			//c=draw.circle(r)
+			c=draw.ellipse(r+'%',r+'%')
+			c.center(origin[0]+xp[0]+'%',origin[1]+xp[1]+'%').fill(color)
 			c.click(callbackclick)
 			c.mousedown(cbdown)
 			c.mouseup(cbup)
+			c.dblclick(cbdbc)
 		}
 	}
 }
 function drawboard(sidelength,distance,r,color='#707',origin=[50,50]){
 	R=sidelength-1
 	d=distance/R
-	c=draw.circle(r).center(origin[0]+'%',origin[1]+'%').fill(color)
+	//c=draw.circle(r)
+	c=draw.ellipse(r+'%',r+'%')
+	c.center(origin[0]+'%',origin[1]+'%').fill(color)
 	c.click(callbackclick)
 	c.mousedown(cbdown)
 	c.mouseup(cbup)
+	c.dblclick(cbdbc)
 	for (k = 2; k <= sidelength; k++) { 
 		console.log(k);
 		drawborder(k,d,r,origin,color)
 	}
 }
 
+
+
 </script>
+</html>
