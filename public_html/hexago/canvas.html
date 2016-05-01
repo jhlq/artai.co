@@ -2,11 +2,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>ARTai</title>
+	<title>artAI Hexago</title>
 	<script src="hexago.js"></script>
 </head>
 
 <body>
+	<h1>Hexago!</h1>
 	<input type="string" id="col" value='#f00'>
 	<input type="number" id="y" onchange="line('y')" value=0>
 	<input type="number" id="x" onchange="line('x')" value=0>
@@ -14,11 +15,6 @@
 	<canvas id="TriCanvas" width="900" height="700"></canvas>
 	<input type="string" id="cols" value='#0f0,#00f,#f00'>
 <script>
-var map = {}
-//map.l=3
-var l=9
-putboard(3,map)
-
 function submit(){
 	var x = document.getElementById("y").value;
 	var y = document.getElementById("x").value;
@@ -36,10 +32,11 @@ function line(ax){
 }
 
 // For canvas
+var l=9;
 var grid = new Grid("TriCanvas", l);
 //grid.drawLine(0,0,500,600);
 //grid.drawGridLine(0,3,'x',"#909",0);
-grid.drawGridLine(0,3,'y',"#909",0);
+//grid.drawGridLine(0,3,'y',"#909",0);
 
 grid.drawGrid();
 

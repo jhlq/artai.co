@@ -1,25 +1,25 @@
-function putborder(l,map,col=''){
-	//l=map.l
+function putborder(l,map,col){
+	if (typeof(col)==='undefined') col = '';
 	if (l==1){
 		map[[0,0]]=col
 	} else {
-		var dirs=[[0,1],[1,0],[1,-1],[0,-1],[-1,0],[-1,1]]
-		loc=[-l+1,0]
-		for (i = 0; i < 6; i++) { 
-			for (j = 0; j < l-1; j++) { 
-				map[loc]=col
-				loc[0]+=dirs[i][0]
-				loc[1]+=dirs[i][1]
+		var dirs=[[0,1],[1,0],[1,-1],[0,-1],[-1,0],[-1,1]];
+		var loc=[-l+1,0];
+		for (var i = 0; i < 6; i++) { 
+			for (var j = 0; j < l-1; j++) { 
+				map[loc]=col;
+				loc[0]+=dirs[i][0];
+				loc[1]+=dirs[i][1];
 			}
 		}
 	}
-	return map
+	return map;
 }
 function putboard(l,map){
-	for (k=1;k<=l;k++){
-		putborder(k,map)
+	for (var k=1;k<=l;k++){
+		putborder(k,map);
 	}
-	return map
+	return map;
 }
 
 
@@ -27,13 +27,15 @@ function putboard(l,map){
 // For canvas
 
 function Grid(canvasId, l) {
-	this.canvasOriginX = 9;
-	this.canvasOriginY = 35;
-	
 	this.map={};
 	putboard(l,this.map);
 	this.canvas = document.getElementById(canvasId);
 	this.context = this.canvas.getContext('2d');
+
+	var rect = this.canvas.getBoundingClientRect();
+	var paddingY=0;
+	this.canvasOriginX = rect.left;
+	this.canvasOriginY = rect.top+paddingY;
 
 	this.d=this.canvas.width/(2*l+1);
 	this.l=l;
@@ -49,7 +51,9 @@ function Grid(canvasId, l) {
 	this.canvas.addEventListener("mousedown", this.clickEvent.bind(this), false);
 };
 
-Grid.prototype.drawLine = function(x0, y0, x1, y1, col="#000", text="") {
+Grid.prototype.drawLine = function(x0, y0, x1, y1, col, text) {
+	if (typeof(col)==='undefined') col = "#000";
+	if (typeof(text)==='undefined') text = "";
 	this.context.strokeStyle = col;
 	this.context.beginPath();
 	this.context.moveTo(x0, y0);
@@ -62,7 +66,12 @@ Grid.prototype.drawLine = function(x0, y0, x1, y1, col="#000", text="") {
 		this.context.fillText(text, x0 - this.d / 3, y0-this.d/30);
 	}
 };
-Grid.prototype.drawGridLine=function(offset,lineWidth=1,ax='x',col="#000",text="",clearfirst=false){
+Grid.prototype.drawGridLine=function(offset,lineWidth,ax,col,text,clearfirst){
+	if (typeof(lineWidth)==='undefined') lineWidth = 1;
+	if (typeof(ax)==='undefined') ax = 'x';
+	if (typeof(col)==='undefined') col = "#000";
+	if (typeof(text)==='undefined') text = "";
+	if (typeof(clearfirst)==='undefined') clearfirst = false;
 	if (clearfirst){
 		this.drawGrid();
 	}
@@ -92,7 +101,7 @@ Grid.prototype.drawGrid = function() {
 	this.drawLine(this.x0-this.sl,this.y0,this.x0+this.sl,this.y0);
 	this.drawLine(this.x0-this.csl,this.y0+this.ssl,this.x0+this.csl,this.y0-this.ssl);
 	this.drawLine(this.x0+this.csl,this.y0+this.ssl,this.x0-this.csl,this.y0-this.ssl);
-	for (i = 1; i < this.l; i++) {
+	for (var i = 1; i < this.l; i++) {
 		//this.drawGridLine(i);
 		//this.drawGridLine(-i);
 		this.drawGridLine(i,1,"x");
@@ -106,15 +115,15 @@ Grid.prototype.drawGrid = function() {
 		this.drawLine(this.x0+this.csl-i*this.d,this.y0+this.ssl,this.x0-this.csl-i*this.d/2,this.y0-this.ssl+i*this.h);
 	}
 
-	for (key in this.map){
+	for (var key in this.map){
 		if (this.map[key]){
 			this.drawCircleKey(key,this.map[key]);
 		}
 	}
 	var o=document.getElementById('x').value;
-	grid.drawGridLine(o,3,'x',"#909",o);
+	this.drawGridLine(o,3,'x',"#909",o);
 	var o=document.getElementById('y').value;
-	grid.drawGridLine(o,3,'y',"#909",o);
+	this.drawGridLine(o,3,'y',"#909",o);
 }
 Grid.prototype.drawCircle=function(x,y,col){
 	//this.context.strokeStyle='#000';//document.getElementById("col").value;
@@ -126,7 +135,7 @@ Grid.prototype.drawCircle=function(x,y,col){
 
 }
 Grid.prototype.drawCircleKey=function(key,col){
-	xy=key.split(',');
+	var xy=key.split(',');
 	//console.log(xy)
 	this.drawCircleAt(parseInt(xy[0]),parseInt(xy[1]),col);
 }
@@ -144,7 +153,7 @@ Grid.prototype.clickEvent = function (e) {
 	var mouseY = e.pageY;
 	var localX = mouseX - this.canvasOriginX;
 	var localY = mouseY - this.canvasOriginY;
-	for (key in this.map){
+	for (var key in this.map){
 		var xy=key.split(',');
 		var x=this.x0+parseInt(xy[0])*this.d+parseInt(xy[1])*this.yvec[0];
 		var y=this.y0-parseInt(xy[1])*this.yvec[1];
@@ -157,19 +166,49 @@ Grid.prototype.clickEvent = function (e) {
 			break;
 		}
 	}
-/*
-	var tile = this.getSelectedTile(localX, localY);
-	if (tile.column >= 0 && tile.row >= 0) {
-		var drawy = tile.column % 2 == 0 ? (tile.row * this.height) + this.canvasOriginY : (tile.row * this.height) + this.canvasOriginY + (this.height / 2);
-		var drawx = (tile.column * this.side) + this.canvasOriginX;
-	var p = document.getElementById("player").value;
-	var ps = document.getElementById("players").value;
-	var c=(document.getElementById("colors").value).split(";");
-	this.drawHex(drawx, drawy, "rgba("+c[p]+",0.3)", "");
-	if (ps!=1){
-		document.getElementById("player").value=(Number(p)+1)%ps;
-	}
-	document.getElementById("plays").value+=p+":"+tile.column+","+tile.row+";";
-	} 
-*/
 };
+function keytoloc(key){
+	var xy=key.split(',');
+	return [parseInt(xy[0]),parseInt(xy[1])]
+}
+function hexdistance(x1,y1,x2,y2){
+	var z1=-x1-y1;
+	var z2=-x2-y2;
+	return (Math.abs(x1 - x2) + Math.abs(y1 - y2) + Math.abs(z1 - z2)) / 2;
+}
+function keydistance(key1,key2){
+	var a1=keytoloc(key1);
+	var a2=keytoloc(key2);
+	return hexdistance(a1[0],a1[1],a2[0],a2[1]);
+}
+Grid.prototype.score = function(){
+	var influence={};
+	for (var loc in this.map){
+		influence[loc]={};
+		for (var move in this.map){
+			if (this.map[move]){
+				influence[loc][this.map[move]]?influence[loc][this.map[move]]+=1/(keydistance(loc,move)+1):influence[loc][this.map[move]]=1/(keydistance(loc,move)+1);
+			}
+		}
+	}
+	var s={};
+	for (var l in influence){
+		var high=0;
+		var cols=[];
+		for (var m in influence[l]){
+			
+			if (influence[l][m]>high){
+				high=influence[l][m];
+				cols=[m];
+			} else if (influence[l][m]==high){
+				cols.push(m);
+			}
+		}
+		for (c in cols){
+			
+			s[cols[c]]?s[cols[c]]+=1:s[cols[c]]=1;
+		}
+	}
+	this.influence=influence;
+	return s;
+}
