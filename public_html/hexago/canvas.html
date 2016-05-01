@@ -14,7 +14,15 @@
 	<button onclick="submit()">Submit!</button>
 	<canvas id="TriCanvas" width="900" height="700"></canvas>
 	<input type="string" id="cols" value='#0f0,#00f,#f00'>
+	Scores: <input type="string" id="scores" value='#f00: 0, #0f0: 0, #00f: 0'>
 <script>
+document.addEventListener("keydown", keyDown, false);
+function keyDown(e) {
+	var keyCode = e.keyCode;
+	if(keyCode==13) {
+		submit();
+	}
+}
 function submit(){
 	var x = document.getElementById("y").value;
 	var y = document.getElementById("x").value;
@@ -25,6 +33,14 @@ function submit(){
 	document.getElementById("col").value=c;
 	cols.push(c);
 	document.getElementById("cols").value=cols.join();
+	var s=grid.score();
+	var ss="";
+	for (var i=0;i<s[0].length;i++){
+		i==0?0:ss+=", ";
+		grid.drawCircle(grid.d,grid.d+i*grid.d,s[1][i],grid.d*s[0][i]/s[0][0]);
+		ss+=s[1][i]+": "+s[0][i];
+	}
+	document.getElementById("scores").value=ss;
 }
 function line(ax){
 	var o=document.getElementById(ax).value;

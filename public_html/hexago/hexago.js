@@ -125,11 +125,12 @@ Grid.prototype.drawGrid = function() {
 	var o=document.getElementById('y').value;
 	this.drawGridLine(o,3,'y',"#909",o);
 }
-Grid.prototype.drawCircle=function(x,y,col){
+Grid.prototype.drawCircle=function(x,y,col,r){
+	if (typeof(r)==='undefined') r = this.d/2;
 	//this.context.strokeStyle='#000';//document.getElementById("col").value;
 	this.context.fillStyle=col;//document.getElementById("col").value;
 	this.context.beginPath();
-	this.context.arc(x,y,this.d/2,0,2*Math.PI);
+	this.context.arc(x,y,r,0,2*Math.PI);
 	//this.context.stroke();
 	this.context.fill();
 
@@ -181,6 +182,20 @@ function keydistance(key1,key2){
 	var a2=keytoloc(key2);
 	return hexdistance(a1[0],a1[1],a2[0],a2[1]);
 }
+function indexOfMax(arr) {
+	if (arr.length === 0) {
+		return -1;
+	}
+	var max = arr[0];
+	var maxIndex = 0;
+	for (var i = 1; i < arr.length; i++) {
+		if (arr[i] > max) {
+			maxIndex = i;
+			max = arr[i];
+		}
+	}
+	return maxIndex;
+}
 Grid.prototype.score = function(){
 	var influence={};
 	for (var loc in this.map){
@@ -204,11 +219,25 @@ Grid.prototype.score = function(){
 				cols.push(m);
 			}
 		}
-		for (c in cols){
+		for (var c in cols){
 			
 			s[cols[c]]?s[cols[c]]+=1:s[cols[c]]=1;
 		}
 	}
+	var svals=[];
+	var scols=[];
+	for (var d in s){
+		svals.push(s[d]);
+		scols.push(d);
+	}
+	var svalsorted=[];
+	var scolsorted=[];
+	for (var i=0;i<svals.length;i++){
+		im=indexOfMax(svals);
+		svalsorted.push(svals[im]);
+		scolsorted.push(scols[im]);
+		svals[im]=-1;
+	}
 	this.influence=influence;
-	return s;
+	return [svalsorted,scolsorted];
 }
