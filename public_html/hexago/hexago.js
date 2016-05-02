@@ -124,6 +124,15 @@ Grid.prototype.drawGrid = function() {
 	this.drawGridLine(o,3,'x',"#909",o);
 	var o=document.getElementById('y').value;
 	this.drawGridLine(o,3,'y',"#909",o);
+
+	var s=this.score();
+	var ss="";
+	for (var i=0;i<s[0].length;i++){
+		i==0?0:ss+=", ";
+		this.drawCircle(this.d,this.d+i*this.d,s[1][i],this.d*s[0][i]/s[0][0]);
+		ss+=s[1][i]+": "+s[0][i];
+	}
+	document.getElementById("scores").value=ss;
 }
 Grid.prototype.drawCircle=function(x,y,col,r){
 	if (typeof(r)==='undefined') r = this.d/2;
@@ -196,7 +205,7 @@ function indexOfMax(arr) {
 	}
 	return maxIndex;
 }
-Grid.prototype.score = function(){
+Grid.prototype.scoreDict = function(){
 	var influence={};
 	for (var loc in this.map){
 		influence[loc]={};
@@ -224,6 +233,11 @@ Grid.prototype.score = function(){
 			s[cols[c]]?s[cols[c]]+=1:s[cols[c]]=1;
 		}
 	}
+	this.influence=influence;
+	return s;
+}
+Grid.prototype.score = function(){
+	s=this.scoreDict();
 	var svals=[];
 	var scols=[];
 	for (var d in s){
@@ -238,6 +252,31 @@ Grid.prototype.score = function(){
 		scolsorted.push(scols[im]);
 		svals[im]=-1;
 	}
-	this.influence=influence;
 	return [svalsorted,scolsorted];
+}
+Grid.prototype.letAIplay = function(){
+	var col=document.getElementById("col").value;
+	var bests=0;
+	var bestloc="";
+	var dict=this.scoreDict();
+	var scorenow=dict[col]||0;
+	for (var loc in this.map){
+		if (this.map[loc]==""){
+			this.map[loc]=col;
+			var dscore=this.scoreDict()[col]-scorenow;
+			if (dscore>bests){
+				bests=dscore;
+				bestloc=loc;
+			}
+			this.map[loc]="";
+		}
+	}
+	if (bests>0){
+		var l=keytoloc(bestloc);
+		document.getElementById("y").value=l[0];
+		document.getElementById("x").value=l[1];
+		submit();
+	} else {
+		alert("The AI passes.")
+	}
 }

@@ -12,20 +12,41 @@
 	<input type="number" id="y" onchange="line('y')" value=0>
 	<input type="number" id="x" onchange="line('x')" value=0>
 	<button onclick="submit()">Submit!</button>
+	<button onclick="grid.letAIplay()">Let AI play!</button>
 	<canvas id="TriCanvas" width="900" height="700"></canvas>
 	<input type="string" id="cols" value='#0f0,#00f,#f00'>
 	Scores: <input type="string" id="scores" value='#f00: 0, #0f0: 0, #00f: 0'>
+	<br>
+	Enable keyboard shortcuts (a, d, z, e and s to submit): 
+	<input type="checkbox" id="shortcuts">
 <script>
 document.addEventListener("keydown", keyDown, false);
 function keyDown(e) {
-	var keyCode = e.keyCode;
-	if(keyCode==13) {
-		submit();
+	if (!document.getElementById("shortcuts").checked){
+		return 0
 	}
+	var k = e.keyCode;
+	//alert(k)
+	if(k==83) {
+		submit();
+	} else if (k==65){
+		document.getElementById("y").value=parseInt(document.getElementById("y").value)-1;
+	} else if (k==68){
+		document.getElementById("y").value=parseInt(document.getElementById("y").value)+1;
+	} else if (k==69){
+		document.getElementById("x").value=parseInt(document.getElementById("x").value)+1;
+	} else if (k==90){
+		document.getElementById("x").value=parseInt(document.getElementById("x").value)-1;
+	}
+	grid.drawGrid();
 }
 function submit(){
 	var x = document.getElementById("y").value;
 	var y = document.getElementById("x").value;
+	if (grid.map[[x,y]]){
+		alert(x+", "+y+" is already occupied by "+grid.map[[x,y]]);
+		return 0;
+	}
 	grid.map[[x,y]]=document.getElementById("col").value;
 	//console.log(grid.map)
 	var cols=document.getElementById("cols").value.split(',');
@@ -33,14 +54,7 @@ function submit(){
 	document.getElementById("col").value=c;
 	cols.push(c);
 	document.getElementById("cols").value=cols.join();
-	var s=grid.score();
-	var ss="";
-	for (var i=0;i<s[0].length;i++){
-		i==0?0:ss+=", ";
-		grid.drawCircle(grid.d,grid.d+i*grid.d,s[1][i],grid.d*s[0][i]/s[0][0]);
-		ss+=s[1][i]+": "+s[0][i];
-	}
-	document.getElementById("scores").value=ss;
+	grid.drawGrid();
 }
 function line(ax){
 	var o=document.getElementById(ax).value;
@@ -48,7 +62,7 @@ function line(ax){
 }
 
 // For canvas
-var l=9;
+var l=5;
 var grid = new Grid("TriCanvas", l);
 //grid.drawLine(0,0,500,600);
 //grid.drawGridLine(0,3,'x',"#909",0);
