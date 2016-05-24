@@ -1,7 +1,7 @@
 function putborder(l,map,col){
 	if (typeof(col)==='undefined') col = '';
 	if (l==1){
-		map[[0,0]]=col
+		//map[[0,0]]=col;
 	} else {
 		var dirs=[[0,1],[1,0],[1,-1],[0,-1],[-1,0],[-1,1]];
 		var loc=[-l+1,0];
@@ -23,7 +23,6 @@ function putboard(l,map){
 }
 
 
-
 // For canvas
 
 function Grid(canvasId, l) {
@@ -33,7 +32,7 @@ function Grid(canvasId, l) {
 	this.context = this.canvas.getContext('2d');
 
 	var rect = this.canvas.getBoundingClientRect();
-	var paddingY=0;
+	var paddingY=(document.documentElement || document.body.parentNode || document.body).scrollTop;
 	this.canvasOriginX = rect.left;
 	this.canvasOriginY = rect.top+paddingY;
 
@@ -49,8 +48,24 @@ function Grid(canvasId, l) {
 	this.csl=Math.cos(Math.PI/3)*this.sl;	
 	
 	this.canvas.addEventListener("mousedown", this.clickEvent.bind(this), false);
-};
+}
+Grid.prototype.updateParams = function(){
+	var rect = this.canvas.getBoundingClientRect();
+	var paddingY=(document.documentElement || document.body.parentNode || document.body).scrollTop;
+	this.canvasOriginX = rect.left;
+	this.canvasOriginY = rect.top+paddingY;
 
+	this.d=this.canvas.width/(2*l+1);
+	this.l=l;
+	this.yvec=[this.d/2,this.d*Math.sin(Math.PI/3)];
+
+	this.x0=this.canvas.width/2;
+	this.y0=this.canvas.height/2;
+	this.sl=(this.l-1)*this.d;
+	this.h=Math.sin(Math.PI/3)*this.d;
+	this.ssl=Math.sin(Math.PI/3)*this.sl;
+	this.csl=Math.cos(Math.PI/3)*this.sl;
+}
 Grid.prototype.drawLine = function(x0, y0, x1, y1, col, text) {
 	if (typeof(col)==='undefined') col = "#000";
 	if (typeof(text)==='undefined') text = "";
@@ -78,9 +93,9 @@ Grid.prototype.drawGridLine=function(offset,lineWidth,ax,col,text,clearfirst){
 	this.context.lineWidth=lineWidth;
 	this.context.strokeStyle = col;
 	var sl=(this.l-1)*this.d;
-	var h=Math.sin(Math.PI/3)*this.d
-	var ssl=Math.sin(Math.PI/3)*sl
-	var csl=Math.cos(Math.PI/3)*sl
+	var h=Math.sin(Math.PI/3)*this.d;
+	var ssl=Math.sin(Math.PI/3)*sl;
+	var csl=Math.cos(Math.PI/3)*sl;
 	if (ax=='x'){
 		this.drawLine(this.x0-sl+Math.abs(offset)*this.d/2,this.y0-offset*h,this.x0+sl-Math.abs(offset)*this.d/2,this.y0-offset*h,col,text);
 	} else if (ax=='y') {
@@ -93,7 +108,7 @@ Grid.prototype.drawGridLine=function(offset,lineWidth,ax,col,text,clearfirst){
 	} else {
 		this.drawLine(this.x0+csl+offset*this.d/2,this.y0+ssl-offset*h,this.x0-csl+offset*this.d,this.y0-ssl);
 	}
-}
+};
 Grid.prototype.drawGrid = function() {
 	this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	this.context.strokeStyle='#000';
@@ -114,7 +129,7 @@ Grid.prototype.drawGrid = function() {
 		this.drawLine(this.x0+this.csl+i*this.d/2,this.y0+this.ssl-i*this.h,this.x0-this.csl+i*this.d,this.y0-this.ssl);
 		this.drawLine(this.x0+this.csl-i*this.d,this.y0+this.ssl,this.x0-this.csl-i*this.d/2,this.y0-this.ssl+i*this.h);
 	}
-
+	this.drawCircleKey("0,0","#909");
 	for (var key in this.map){
 		if (this.map[key]){
 			this.drawCircleKey(key,this.map[key]);
@@ -122,18 +137,19 @@ Grid.prototype.drawGrid = function() {
 	}
 	var o=document.getElementById('x').value;
 	this.drawGridLine(o,3,'x',"#909",o);
-	var o=document.getElementById('y').value;
+	o=document.getElementById('y').value;
 	this.drawGridLine(o,3,'y',"#909",o);
 
 	var s=this.score();
 	var ss="";
+	var w=this.canvas.width;
 	for (var i=0;i<s[0].length;i++){
 		i==0?0:ss+=", ";
-		this.drawCircle(this.d,this.d+i*this.d,s[1][i],this.d*s[0][i]/s[0][0]);
+		this.drawCircle(w/15,w/15+i*w/15,s[1][i],w/15*s[0][i]/s[0][0]);
 		ss+=s[1][i]+": "+s[0][i];
 	}
 	document.getElementById("scores").value=ss;
-}
+};
 Grid.prototype.drawCircle=function(x,y,col,r){
 	if (typeof(r)==='undefined') r = this.d/2;
 	//this.context.strokeStyle='#000';//document.getElementById("col").value;
@@ -143,20 +159,20 @@ Grid.prototype.drawCircle=function(x,y,col,r){
 	//this.context.stroke();
 	this.context.fill();
 
-}
+};
 Grid.prototype.drawCircleKey=function(key,col){
 	var xy=key.split(',');
 	//console.log(xy)
-	this.drawCircleAt(parseInt(xy[0]),parseInt(xy[1]),col);
-}
+	this.drawCircleAt(parseInt(xy[0],10),parseInt(xy[1],10),col);
+};
 Grid.prototype.drawCircleAt=function(xi,yi,col){
 	var x=this.x0+xi*this.d+yi*this.yvec[0];
 	var y=this.y0-yi*this.yvec[1];
 	//console.log(x,y)
 	this.drawCircle(x,y,col);
-}
+};
 function distance(x1,y1,x2,y2){
-	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))
+	return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 Grid.prototype.clickEvent = function (e) {
 	var mouseX = e.pageX;
@@ -165,8 +181,8 @@ Grid.prototype.clickEvent = function (e) {
 	var localY = mouseY - this.canvasOriginY;
 	for (var key in this.map){
 		var xy=key.split(',');
-		var x=this.x0+parseInt(xy[0])*this.d+parseInt(xy[1])*this.yvec[0];
-		var y=this.y0-parseInt(xy[1])*this.yvec[1];
+		var x=this.x0+parseInt(xy[0],10)*this.d+parseInt(xy[1],10)*this.yvec[0];
+		var y=this.y0-parseInt(xy[1],10)*this.yvec[1];
 		if (distance(localX,localY,x,y)<this.d/2){
 			//console.log(key);
 			document.getElementById("x").value=xy[1];
@@ -179,7 +195,7 @@ Grid.prototype.clickEvent = function (e) {
 };
 function keytoloc(key){
 	var xy=key.split(',');
-	return [parseInt(xy[0]),parseInt(xy[1])]
+	return [parseInt(xy[0],10),parseInt(xy[1],10)];
 }
 function hexdistance(x1,y1,x2,y2){
 	var z1=-x1-y1;
@@ -235,9 +251,9 @@ Grid.prototype.scoreDict = function(){
 	}
 	this.influence=influence;
 	return s;
-}
+};
 Grid.prototype.score = function(){
-	s=this.scoreDict();
+	var s=this.scoreDict();
 	var svals=[];
 	var scols=[];
 	for (var d in s){
@@ -247,13 +263,13 @@ Grid.prototype.score = function(){
 	var svalsorted=[];
 	var scolsorted=[];
 	for (var i=0;i<svals.length;i++){
-		im=indexOfMax(svals);
+		var im=indexOfMax(svals);
 		svalsorted.push(svals[im]);
 		scolsorted.push(scols[im]);
 		svals[im]=-1;
 	}
 	return [svalsorted,scolsorted];
-}
+};
 Grid.prototype.letAIplay = function(){
 	var col=document.getElementById("col").value;
 	var bests=0;
@@ -275,8 +291,26 @@ Grid.prototype.letAIplay = function(){
 		var l=keytoloc(bestloc);
 		document.getElementById("y").value=l[0];
 		document.getElementById("x").value=l[1];
-		submit();
+		this.submit();
 	} else {
-		alert("The AI passes.")
+		alert("The AI passes.");
 	}
+};
+Grid.prototype.submit = function(){
+	var x = document.getElementById("y").value;
+	var y = document.getElementById("x").value;
+	if (this.map[[x,y]]){
+		alert(x+", "+y+" is already occupied by "+this.map[[x,y]]);
+		return 0;
+	}
+	if (typeof(this.map[[x,y]])==='undefined'){
+		return 0;	
+	}
+	this.map[[x,y]]=document.getElementById("col").value;
+	var cols=document.getElementById("cols").value.split(',');
+	var c=cols.shift();
+	document.getElementById("col").value=c;
+	cols.push(c);
+	document.getElementById("cols").value=cols.join();
+	this.drawGrid();
 }

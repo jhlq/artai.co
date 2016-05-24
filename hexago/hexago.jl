@@ -1,133 +1,166 @@
 using Hexagons
-HC=HexagonCubic
-HexagonCubic(x,y)=HC(x,y,-x-y)
-+(h1::HC,h2::HC)=HC(h1.x+h2.x,h1.y+h2.y,h1.z+h2.z)
-function .+(hca::Array{Hexagons.HexagonCubic,1}, h::Hexagons.HexagonCubic)
-	na=HC[]
-	for a in hca
-		push!(na,a+h)
-	end
-	return na
+using Gadfly
+import Gadfly.plot
+HC(x,y)=HexagonCubic(x,y,-x-y)
+function distance(h1::HexagonCubic,h2::HexagonCubic)
+	return (abs(h1.x - h2.x) + abs(h1.y1 - h2.y) + abs(h1.z - h2.z)) / 2
 end
 
-type Spot
-	loc::HC
-	has
-end
-N=2
-field=[]
-map=Dict{Tuple{Int64,Int64},Spot}()
-for dx in -N:N
-	for dy in max(-N,-dx-N):min(N,-dx+N)
-			dz=-dx-dy
-			push!(field,HexagonCubic(dx,dy,dz))
-			map[(dx,dy)]=Spot(HC(dx,dy,dz),[])
+#Gadfly.set_default_plot_size(14cm, 8cm)
+#X = rand(MultivariateNormal([0.0, 0.0], [1.0 0.5; 0.5 1.0]), 10);
+#plot(x=X[1,:], y=X[2,:], Geom.hexbin(xbincount=10, ybincount=10))
+
+#plot(x=[0,1,2], y=[0,0,1], color=repeat([0,2,3], outer=[1]),Scale.color_discrete())
+function plot(map)
+	x=AbstractFloat[]
+	y=AbstractFloat[]
+	cols=Int[]
+	for (key,val) in map.locs
+		c=center(val.hex)
+		push!(x,c[1])
+		push!(y,c[2])
+		push!(cols,val.col)
 	end
+	plot(x=x,y=y,color=cols,Scale.color_discrete())
 end
 
-placed=Dict(1=>HC[],2=>HC[],3=>HC[])
-
-function coordify(hca)
-	xs=Float64[]
-	ys=Float64[]
-	for hex in hca
-		cor=center(hex)
-		push!(xs,cor[1])
-		push!(ys,cor[2])
-	end
-	return xs,ys
+type Map
+	locs
+	r
+	moves
 end
-
-function place(x::Integer,y::Integer,p=1)
-	s=p==1?"*":p==2?"+":"x"
-	h=HC(x,y,-x-y)
-	loc=center(h)
-	scatter([loc[1]],[loc[2]],s)
+type Loc
+	hex
+	col
+	inf
 end
-function place(hca::Array{HC},pa::Array)
-	for i in 1:length(hca)-1
-		place(hca[i].x,hca[i].y,pa[i])
-	end
-	place(hca[end].x,hca[end].y,pa[end])
-end
-function place(cora::Array{Tuple{Int64,Int64},1},pa::Array)
-	for i in 1:length(cora)-1
-		place(cora[i][1],cora[i][2],pa[i])
-	end
-	place(cora[end][1],cora[end][2],pa[end])
-end
-function oddtocubic(plays)
-	plarr=split(plays,';')[1:end-1]
-	hca=HC[]
-	pa=Int64[]
-	for pl in plarr
-		p=split(pl,':')
-		player=parse(Int,p[1])
-		loc=split(p[2],',')
-		col=parse(Int,loc[1])-10
-		row=parse(Int,loc[2])-10
-		#println(col,row)
-		x = col
-		z = row - (col - (col&1)) / 2
-		y = -x-z
-		push!(hca,HC(x,y,z))
-		push!(pa,player)
-	end
-	hca,pa
-end
-function clear()
-	hold(false)
-	scatter(coordify(field)...)
-	hold(true)
-end
-directions = [
-   HC(+1, -1,  0), HC(+1,  0, -1), HC( 0, +1, -1),
-   HC(-1, +1,  0), HC(-1,  0, +1), HC( 0, -1, +1)
-]
-function painter(map,origin)
-	paint=HC[]
-	fringe=HC[origin]
-	visited=HC[]
-	newfringe=HC[]
-	while !isempty(fringe)
-		for h in fringe
-			if !in(h,visited) && haskey(map,(h.x,h.y)) && isempty(map[(h.x,h.y)].has)
-				adj=directions.+h
-				for a in adj
-					if !in(a,newfringe) && !in(a,visited)
-						push!(newfringe,a)
-					end
-				end
-				push!(paint,h)
-			end
-			push!(visited,h)
+function makemap(radius=6)
+	map=Map(Dict{Tuple{Int,Int},Loc}(),radius,Any[])
+	for r in 1:radius-1
+		for h in ring(r)
+			map.locs[h.x,h.y]=Loc(h,0,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
 		end
-		fringe=newfringe
-		newfringe=HC[]
-		#println(paint)
-	end	
-	return paint
+	end
+	return map		
 end
-#=
-xs,ys=coordify(field)
-scatter(xs,ys)
-using Winston;scatter(coordify(field)...);hold()
-
-plays="0:10,10;1:11,9;0:12,9;"
-plarr=split(plays,';')[1:end-1]
-p1=split(plarr[1],':')
-player=parse(Int,p1[1])
-loc=split(p1[2],',')
-x1=parse(Int,loc[1])
-y1=parse(Int,loc[2])
-
-plays="0:9,9;1:8,9;0:8,8;"
-hca,pa=oddtocubic(plays)
-place(hca,pa)
-
-line=[(2,-1),(1,-1),(0,-1),(-1,-1)]
-for l in line
-	push!(map[l].has,1)
+function sprinf!(map,x,y,c,ir) #spread influence
+	visited=[(x,y)]
+	fringe=[(x,y)]
+	for i in 1:ir
+		if i==1 && haskey(map.locs,fringe[1])
+			map.locs[fringe[1]].inf[c]+=1.0
+		else
+			nfringe=[]
+			for k in 1:length(fringe)
+				for adj in neighbors(map.locs[fringe[k]].hex) 
+					ladj=(adj.x,adj.y)
+					if !in(ladj,visited) && haskey(map.locs,ladj)
+						map.locs[ladj].inf[c]+=1.0/i
+						if map.locs[ladj].col==0 || map.locs[ladj].col==c 
+							push!(nfringe,ladj)
+						end
+						push!(visited,ladj)
+					end 
+				end
+			end
+			if length(nfringe)==0
+				break
+			end
+			fringe=nfringe
+		end
+	end
+	return map
+end
+function place!(map,x,y,c,ir=6)
+	if map.locs[x,y].col!=0
+		error("($x,$y) is occupied.")
+	end
+	map.locs[x,y].hex=HC(x,y)	
+	map.locs[x,y].col=c
+	push!(map.moves,[(x,y),c])
+	sprinf!(map,x,y,c,ir)
+end
+#place!(map,xy,c)=place!(map,xy[1],xy[2],c)
+function place!(map,xysc::Array,ir)
+	for xyc in xysc
+		place!(map,xyc[1][1],xyc[1][2],xyc[2],ir)
+	end
+	return map
+end
+function to_l(mstr)
+	ms=split(mstr,',')
+	return (parse(Int,ms[1]),parse(Int,ms[2]))
+end
+function to_a(movestr)
+	a=Any[]
+	coldic=Dict("#f00"=>1,"#0f0"=>2,"#00f"=>3)
+	stra=split(movestr,'+')
+	for str in stra
+		sa=split(str,':')
+		if in(sa[1],keys(coldic))
+			push!(a,[to_l(sa[2]),coldic[sa[1]]])
+		end
+	end
+	return a
+end
+function to_s(map::Map)
+	s="#909:0,0"
+	diccol=Dict(1=>"#f00",2=>"#0f0",3=>"#00f")
+	for move in map.moves
+		s*="+$(diccol[move[2]]):$(move[1][1]),$(move[1][2])"
+	end
+	return s
+end
+function makemap(movestr::AbstractString,ir=6,r=6)
+	map=makemap(r)
+	place!(map,to_a(movestr),ir)
+end
+function max(d::Dict)
+	k=Int[]
+	m=-Inf
+	for (key,val) in d
+		if val==m
+			push!(k,key)
+		elseif val>=m
+			m=val
+			k=Int[key]
+		end
+	end
+	return k
+end
+function points(l::Loc)
+	maxinf=max(l.inf)
+	p=1
+	if !in(l.col,maxinf)
+		p+=1
+	end
+	c=Dict{Int,AbstractFloat}()
+	for col in maxinf
+		c[col]=p/length(maxinf)
+	end
+	return c
+end
+function score(map::Map)
+	s=Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0)
+	for (key,val) in map.locs
+		for (c,p) in points(val)
+			s[c]+=p
+		end
+	end
+	return s
 end
 
-=#
+type AI
+	
+end
+function letAIplay(map,AI)
+#opening evaluate whole board -> decide on segment
+	#check relative influence
+	#give value to each section, pick one by random from 1:v1:v2:v3...
+	#r->AI->ring to put
+#later evaluate move to expand from
+	#determine expansion length
+	#up or down?
+#inspect connections
+
+end
