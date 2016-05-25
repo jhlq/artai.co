@@ -150,11 +150,31 @@ function score(map::Map)
 	return s
 end
 
-type AI
-	
+function relinf(inf::Dict,col) #relative influense
+	cinf=inf[col]
+	minf=0
+	for (k,v) in inf
+		if k!=col && v>minf
+			minf=v
+		end
+	end
+	return cinf-minf
 end
-function letAIplay(map,AI)
+type AI
+	col
+end
+function letAIplay(map::Map,ai::AI)
 #opening evaluate whole board -> decide on segment
+	cornerscores=ones(6)
+	for corneri in 1:6
+		cr=floor(map.r/2)
+		cornercenter=neighbor(HC(0,0),corneri,cr+1)
+		for hex in ring(cornercenter,cr)
+			l=map[hex.x,hex.y]
+			data=relinf(l.inf,ai.col
+		end
+	end
+		
 	#check relative influence
 	#give value to each section, pick one by random from 1:v1:v2:v3...
 	#r->AI->ring to put
