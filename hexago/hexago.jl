@@ -72,16 +72,19 @@ function sprinf!(map,x,y,c,ir) #spread influence
 	return map
 end
 function place!(map,x,y,c,ir=6)
+	push!(map.moves,[(x,y),c])
+	if x==y==0
+		return "pass"
+	end
 	if map.locs[x,y].col!=0
 		error("($x,$y) is occupied.")
 	end
 	map.locs[x,y].hex=HC(x,y)	
 	map.locs[x,y].col=c
-	push!(map.moves,[(x,y),c])
 	sprinf!(map,x,y,c,ir)
 end
 #place!(map,xy,c)=place!(map,xy[1],xy[2],c)
-function place!(map,xysc::Array,ir)
+function place!(map,xysc::Array,ir=6)
 	for xyc in xysc
 		place!(map,xyc[1][1],xyc[1][2],xyc[2],ir)
 	end
@@ -161,20 +164,68 @@ function relinf(inf::Dict,col) #relative influense
 	return cinf-minf
 end
 type AI
-	col
+	net
+	bias
+	col::Int
+end
+AI(col::Int)=AI(rand(3,3)-0.5,rand(3)-0.5,col)
+AI()=AI(1)
+ask(ai::AI,data::Number)=ask(ai::AI,[data])
+function ask(ai::AI,data::Array)
+	nn=size(ai.net)[1]
+	exc=zeros(nn)
+	for di in 1:length(data)
+		exc[di]=data[di]
+	end
+	answer=AbstractFloat[]
+	for n in 1:nn
+		exc=tanh(ai.net*(exc+ai.bias))
+		push!(answer,exc[end])
+	end
+	return answer
+end
+function sanity(ai::AI)
+	pos=sum(ask(ai,[1000]))
+	neg=sum(ask(ai,[-1000]))
+	zer=sum(ask(ai,[0]))
+	if zer>pos && zer>neg
+		return true
+	end
+	false
+end
+function makesaneAI()
+	ai=AI()
+	while !sanity(ai)
+		ai=AI()
+	end
+	ai
 end
 function letAIplay(map::Map,ai::AI)
 #opening evaluate whole board -> decide on segment
-	cornerscores=ones(6)
+	cornerscores=Array[]
+	move=(0,0)
+	bestscore=-1000
 	for corneri in 1:6
-		cr=floor(map.r/2)
-		cornercenter=neighbor(HC(0,0),corneri,cr+1)
-		for hex in ring(cornercenter,cr)
-			l=map[hex.x,hex.y]
-			data=relinf(l.inf,ai.col
+		cr=round(Int,map.r/2)
+		cornercenter=neighbor(HC(0,0),corneri,cr)
+		l=map.locs[cornercenter.x,cornercenter.y]
+		if l.col!=0
+			continue
 		end
+		data=relinf(l.inf,ai.col)
+		r=ask(ai,data)
+		push!(cornerscores,r)
+		if sum(r)>bestscore
+			bestscore=sum(r)
+			move=(cornercenter.x,cornercenter.y)
+		end
+#		for hex in ring(cornercenter,cr)
+#			l=map[hex.x,hex.y]
+#			data=relinf(l.inf,ai.col)
+#		end
 	end
-		
+	place!(map,move[1],move[2],ai.col)
+	return move,cornerscores
 	#check relative influence
 	#give value to each section, pick one by random from 1:v1:v2:v3...
 	#r->AI->ring to put
