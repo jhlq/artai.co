@@ -5,6 +5,7 @@ HC(x,y)=HexagonCubic(x,y,-x-y)
 function distance(h1::HexagonCubic,h2::HexagonCubic)
 	return (abs(h1.x - h2.x) + abs(h1.y1 - h2.y) + abs(h1.z - h2.z)) / 2
 end
+nhexs(r)=r==1?7:nhexs(r-1)+r*6
 
 #Gadfly.set_default_plot_size(14cm, 8cm)
 #X = rand(MultivariateNormal([0.0, 0.0], [1.0 0.5; 0.5 1.0]), 10);
@@ -295,10 +296,10 @@ function match(ai1::AI,ai2::AI,nmoves::Int)
 	end
 	return map
 end
-function makeAIs(nais::Int)
+function makeAIs(nn::Int,nais::Int)
 	ais=AI[]
 	for n in 1:nais
-		push!(ais,makesaneAI())
+		push!(ais,makesaneAI(nn))
 	end
 	return ais
 end
@@ -317,6 +318,37 @@ function tournament!(ais,nmoves::Int)
 	end
 	return ais
 end
+function tournament(ais,nmoves::Int)
+	lai=length(ais)
+	wins=zeros(lai)
+	for aii in 1:lai
+		#w=0
+		ai1=ais[aii]
+		for aii2 in 1:lai
+			ai2=ais[aii2]
+			if aii!=aii2
+				m=match(ai1,ai2,nmoves)
+				s=score(m)
+				#println(s[1]," ",s[2]," ",max(s)," ",to_s(m))
+				for c in max(s)
+					wins[[aii,aii2][c]]+=1
+				end
+			end
+		end
+		#wins[aii]=w
+	end
+	return wins
+end
+function tournaments(ntou::Int,nnets::Int,nn::Int,nmoves::Int)
+	winners=AI[]
+	for tou in 1:ntou
+		print(tou,' ')
+		ais=makeAIs(nn,nnets)
+		tournament!(ais,nmoves)
+		push!(winners,ais[end])
+	end
+	return winners
+end
 import Base.isless
 isless(ai1::AI,ai2::AI)=isless(ai1.wins,ai2.wins)
 function winners(ais)
@@ -332,3 +364,21 @@ function winners(ais)
 	end
 	return ws
 end
+function save(net,filename)
+	sn=open(filename,"w") #write append
+	h,w=size(net)
+	for hi in 1:h
+		for wi in 1:w
+			write(sn,"$(net[hi,wi])")
+			if wi!=w
+				write(sn,' ')
+			end
+		end
+		if hi!=h
+			write(sn,'\n')
+		end
+	end
+	close(sn)
+end
+load(filename)=readdlm(filename,' ')
+
