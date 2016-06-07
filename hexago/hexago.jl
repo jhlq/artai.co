@@ -37,9 +37,13 @@ type Loc
 	col
 	inf
 end
-function makemap(radius=6,ir=6)
+function makemap(radius=6,ir=6,removecenter::Bool=true)
 	map=Map(Dict{Tuple{Int,Int},Loc}(),radius,Any[],ir,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
-	map.locs[0,0]=Loc(HC(0,0),-1,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
+	if removecenter
+		map.locs[0,0]=Loc(HC(0,0),-1,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
+	else
+		map.locs[0,0]=Loc(HC(0,0),0,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
+	end
 	for r in 1:radius-1
 		for h in ring(r)
 			map.locs[h.x,h.y]=Loc(h,0,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
@@ -114,9 +118,9 @@ function to_l(mstr)
 	ms=split(mstr,',')
 	return (parse(Int,ms[1]),parse(Int,ms[2]))
 end
-function to_a(movestr)
+function to_a(movestr,coldic=Dict("-1"=>-1, "1"=>1, "2"=>2, "3"=>3, "#909"=>-1, "#f00"=>1, "#0f0"=>2, "#00f"=>3))
+println(movestr)
 	a=Any[]
-	coldic=Dict("#f00"=>1,"#0f0"=>2,"#00f"=>3)
 	stra=split(movestr,'+')
 	for str in stra
 		sa=split(str,':')
@@ -134,9 +138,10 @@ function to_s(map::Map)
 	end
 	return s
 end
-function makemap(movestr::AbstractString,ir=6,r=6)
-	map=makemap(r)
-	place!(map,to_a(movestr),ir)
+function makemap(movestr::AbstractString,r=6,ir=6,rc=true)
+	map=makemap(r,ir,rc)
+	place!(map,to_a(movestr))
+	return map
 end
 import Base.max
 function max(d::Dict)
