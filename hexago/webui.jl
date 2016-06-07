@@ -4,7 +4,14 @@ map=makemap(6,6,true)
 place!(map,1,1,1)
 place!(map,1,-1,2)
 place!(map,-1,1,3)
-function asciimap(map::Map=map)
+function makequerystring(d::Dict)
+	str=""
+	for (key,val) in d
+		str*=key*"="*val*"&"
+	end
+	return str[1:end-1]
+end
+function asciimap(map::Map,options)
 	r=map.r
 	amap=""
 	cols=["#600","#060","#006"]
@@ -25,7 +32,11 @@ function asciimap(map::Map=map)
 			loc=(lx+xo,y)
 			col=map.locs[loc].col
 			if col==0
-				amap*="<a title='$loc' href='artai.co'>0</a> "
+				oc=deepcopy(options)
+				oc["moves"]*="+"*oc["col"]*":$(loc[1]),$(loc[2])"
+				np=parse(oc["col"])%parse(oc["players"])+1
+				oc["col"]="$np"
+				amap*="<a title='$loc' href='$(makequerystring(oc))'>0</a> "
 			elseif col<0
 				amap*="<span title='$loc'>x </span>"
 			else
@@ -40,22 +51,23 @@ function asciimap(map::Map=map)
 	end
 	return amap
 end
-function asciimap(options::Dict)
-	v=Dict("r"=>"6","ir"=>"6","rc"=>"true","moves"=>"-1:0,0")
+function asciimap(optstr::AbstractString)
+	options=HttpParser.parsequerystring(optstr)
+	v=Dict("r"=>"6","ir"=>"6","moves"=>"-1:0,0","players"=>"2","col"=>"1")
 	for k in keys(v)
 		if haskey(options,k)
 			v[k]=options[k]
 		end
 	end
-	println(v)
-	map=makemap(v["moves"],parse(Int,v["r"]),parse(Int,v["ir"]),parse(v["rc"]))
-	return asciimap(map)
+	map=makemap(v["moves"],parse(Int,v["r"]),parse(Int,v["ir"]),false)
+	println(v,map.locs[(1,0)])
+	return asciimap(map,v)
 end
 
 @app test = (
 	Mux.defaults,
-	page(respond("<h1>Hello Hexago!</h1>\n"*asciimap())),
-	page("/map/:options",req->asciimap(HttpParser.parsequerystring(req[:params][:options]))),
+	page(respond("<h1>Hello Hexago!</h1>\n")),
+	page("/map/:options",req->asciimap(req[:params][:options])),
 	page("/about",
 			 probabilty(0.1, respond("<h1>Boo!</h1>")),
 			 respond("<h1>About Me</h1>")),

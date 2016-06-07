@@ -37,7 +37,7 @@ type Loc
 	col
 	inf
 end
-function makemap(radius=6,ir=6,removecenter::Bool=true)
+function makemap(radius=6,ir=6,removecenter::Bool=false)
 	map=Map(Dict{Tuple{Int,Int},Loc}(),radius,Any[],ir,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
 	if removecenter
 		map.locs[0,0]=Loc(HC(0,0),-1,Dict{Int,AbstractFloat}(1=>0,2=>0,3=>0))
@@ -95,7 +95,7 @@ function sprinfall!(map)
 	return map
 end
 function place!(map,x,y,c)
-	if x==y==0
+	if x==y==0 && map.locs[(0,0)].col!=0
 		return map #"pass"
 	end
 	if map.locs[x,y].col!=0
@@ -119,7 +119,6 @@ function to_l(mstr)
 	return (parse(Int,ms[1]),parse(Int,ms[2]))
 end
 function to_a(movestr,coldic=Dict("-1"=>-1, "1"=>1, "2"=>2, "3"=>3, "#909"=>-1, "#f00"=>1, "#0f0"=>2, "#00f"=>3))
-println(movestr)
 	a=Any[]
 	stra=split(movestr,'+')
 	for str in stra
@@ -138,7 +137,7 @@ function to_s(map::Map)
 	end
 	return s
 end
-function makemap(movestr::AbstractString,r=6,ir=6,rc=true)
+function makemap(movestr::AbstractString,r=6,ir=6,rc=false)
 	map=makemap(r,ir,rc)
 	place!(map,to_a(movestr))
 	return map
