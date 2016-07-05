@@ -32,8 +32,32 @@ type Mut
 	rindmat
 	nmutvec
 end
-function mutate!(ai::AI,m::Mut)
+Mut()=Mut(ones(3,3),ones(3))
+function mutate(ai::AI,m::Mut,damp=1)
+	dai=deepcopy(ai)
+	s=onevsall(dai,sampleais,9)
 	nmuts=rindvec(m.nmutvec)
+	muts=Tuple[]
+	for mut in 1:nmuts
+		muti=rindmat(m.rindmat)
+		push!(muts,muti)
+		dai.net[muti...]+=(rand()-0.5)/damp
+		
+	end
+	ns=onevsall(dai,sampleais,9)
+	if ns>s
+		m.nmutvec[nmuts]*=2
+		for n in 1:nmuts
+			m.rindmat[muts[n]...]*=2
+		end
+		return dai
+	else
+		m.nmutvec[nmuts]*=0.5
+		for n in 1:nmuts
+			m.rindmat[muts[n]...]*=0.5
+		end
+		return false
+	end		
 end
 type MAI<:AI
 	net
@@ -41,6 +65,7 @@ type MAI<:AI
 	wins
 	games #played	
 	points
+	#rank
 end
 function letAIplay!(map::Map,ai::MAI,col::Int)
 	move=(0,0)
@@ -77,6 +102,7 @@ function makeais(nais,nn=3)
 	end
 	return ais
 end
+sampleais=makeais(99)
 
 function onevsall(ai,ais,nmoves::Int)
 	p=0
