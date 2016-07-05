@@ -60,7 +60,7 @@ function asciimap(optstr::AbstractString)
 		end
 	end
 	map=makemap(v["moves"],parse(Int,v["r"]),parse(Int,v["ir"]),false)
-	println(v,map.locs[(1,0)])
+	#println(v,map.locs[(1,0)])
 	return asciimap(map,v)
 end
 
