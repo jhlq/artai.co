@@ -116,3 +116,18 @@ function onevsall(ai,ais,nmoves::Int)
 	end
 	return p
 end
+function learn(nit)
+	m=Mut()
+	ai=makeais(1)[1]
+	println(onevsall(ai,sampleais,9))
+	for i in 1:nit
+		print(i)
+		na=mutate(ai,m)
+		if na!=false
+			print('!')
+			ai=na
+		end
+	end
+	println('\n',onevsall(ai,sampleais,9))
+	return ai,m
+end
